@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-// eslint-disable-next-line no-unused-vars
-import { login, signup } from "../../services/authentication";
+import { login } from "../../services/authentication";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -12,51 +10,54 @@ export const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const token = await login(email, password);
+      const data = await login(email, password);
+      const token = data.token;
+      const user_id = data.id;
       localStorage.setItem("token", token);
+      localStorage.setItem("user_id", user_id);
       navigate("/cupboard");
     } catch (err) {
-      console.error(err);
+      alert(err);
       navigate("/login");
     }
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleClick = async (event) => {
-    event.preventDefault();
-     navigate("/signup");
-    
-    
-};
-
-  return (
-    <>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+return (
+  <>
+    <h2>Log in to your account</h2>
+    <form onSubmit={handleSubmit}>
+      <div>
         <label htmlFor="email">Email:</label>
         <input
           id="email"
           type="text"
+          required
+          placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
+      </div>
+      <div>
         <label htmlFor="password">Password:</label>
         <input
           id="password"
           type="password"
+          required
+          placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
-        <button type="button" onClick={handleClick}>Sign up HERE to Start Cooking...</button>
-      </form>
-    </>
-  );
+      </div>
+      <div>
+        <input
+          role="submit-button"
+          id="submit"
+          type="submit"
+          value="Submit" 
+          className="button"
+        />
+      </div>
+    </form>
+  </>
+);
 };

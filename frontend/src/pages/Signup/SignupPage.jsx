@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { signup } from "../../services/authentication";
 
 export const SignupPage = () => {
@@ -14,52 +13,60 @@ export const SignupPage = () => {
     try {
       await signup(username, email, password);
       console.log("redirecting...:");
-      navigate("/cupboard");
+      navigate("/login");
     } catch (err) {
-      console.error(err);
+      alert(err);
       navigate("/signup");
     }
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  }; 
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
   return (
     <>
-      <h2>Signup</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          id="username"
-          type="text"
-          value={username}
-          onChange={handleUsernameChange}
-        />
+        <div id="username">
+          <label htmlFor="username">Full Name:</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
         <label htmlFor="email">Email:</label>
         <input
           id="email"
           type="text"
+          required
+          placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password:</label>
-        <input
-          placeholder="Password"
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            id="password"
+            type="password"
+            required
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <p className="passwordValidator">Password must be 8+ characters</p>
+          <p className="passwordValidator">Password must contain at least one uppercase and one lowercase letter</p>
+          <p className="passwordValidator">Password must contain at least one number</p>
+        </div>
+        <div>
+          <input
+            role="submit-button"
+            id="submit"
+            type="submit"
+            value="Submit"
+            className="button"
+          />
+        </div>
       </form>
     </>
   );
