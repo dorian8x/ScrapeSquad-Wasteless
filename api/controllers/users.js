@@ -43,3 +43,9 @@ const create = async (req, res) => {
     });
   });
 };
+
+const UsersController = {
+  create: create,
+};
+
+module.exports = UsersController;
