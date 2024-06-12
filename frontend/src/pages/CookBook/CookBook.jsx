@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getPosts } from "../../services/posts";
-import Post from "../../components/Post/Post";
+import { getRecipes } from "../../services/cookbook";
+import Recipes from "../../components/Recipes";
 
-export const FeedPage = () => {
-  const [posts, setPosts] = useState([]);
+export const CookBook = () => {
+  const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      getPosts(token)
+      getRecipes(token)
         .then((data) => {
-          setPosts(data.posts);
+          setRecipes(data.posts);
           localStorage.setItem("token", data.token);
         })
         .catch((err) => {
@@ -31,10 +31,10 @@ export const FeedPage = () => {
 
   return (
     <>
-      <h2>Posts</h2>
-      <div className="feed" role="feed">
-        {posts.map((post) => (
-          <Post post={post} key={post._id} />
+      <h2>Saved Recipes</h2>
+      <div className="cookbook" role="cookbook">
+        {recipes.map((recipes) => (
+          <Recipes recipes={recipes} key={recipes._id} />
         ))}
       </div>
     </>

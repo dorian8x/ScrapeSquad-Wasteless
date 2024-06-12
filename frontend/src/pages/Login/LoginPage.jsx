@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "../../services/authentication";
+// eslint-disable-next-line no-unused-vars
+import { login, signup } from "../../services/authentication";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ export const LoginPage = () => {
     try {
       const token = await login(email, password);
       localStorage.setItem("token", token);
-      navigate("/posts");
+      navigate("/cupboard");
     } catch (err) {
       console.error(err);
       navigate("/login");
@@ -27,6 +28,13 @@ export const LoginPage = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+     navigate("/signup");
+    
+    
+};
 
   return (
     <>
@@ -47,6 +55,7 @@ export const LoginPage = () => {
           onChange={handlePasswordChange}
         />
         <input role="submit-button" id="submit" type="submit" value="Submit" />
+        <button type="button" onClick={handleClick}>Sign up HERE to Start Cooking...</button>
       </form>
     </>
   );
