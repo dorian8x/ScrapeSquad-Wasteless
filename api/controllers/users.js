@@ -18,7 +18,6 @@ const create = async (req, res) => {
         const profile = new Profile({
           bio: "default bio",
           author: user._id,
-          profilePictureURL: "uploads/default_profile_pic.jpg",
         });
         await profile.save();
 
@@ -43,3 +42,8 @@ const create = async (req, res) => {
     });
   });
 };
+const UsersController = {
+  create: create,
+};
+
+module.exports = UsersController;

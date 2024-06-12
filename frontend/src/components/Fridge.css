@@ -1,0 +1,59 @@
+.fridge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: #f0f0f0;
+}
+
+.fridge {
+    width: 200px;
+    height: 400px;
+    background-color: #f2ebeb;
+    border: 2px solid #0b0b0b;
+    position: relative;
+}
+
+.fridge-door {
+    width: 200px;
+    height: 400px;
+    background: linear-gradient(to bottom, #8c5151, #e00505);
+    /* background-color: #9f2b08; */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 35px 15px rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transform-style: preserve-3d;
+    position: absolute;
+    transform-origin:left;
+    perspective: 500px;
+    /* cursor: pointer; */
+}
+
+.door-handle {
+    width: 30px;
+    height: 70px;
+    background-color: #2a2929;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fridge-content {
+    display: none;
+    padding: 10px;
+}
+
+.fridge-content.open {
+    display: block;
+}
+
+.ingredient {
+    background-color: #ff6347;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: grab;
+}
