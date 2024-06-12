@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
-
+import { Cupboard } from "./pages/Cupboard/Cupboard"
 import { CookBook } from "./pages/CookBook/CookBook";
 import { LandingPage } from "./pages/Landing/LandingPage";
 
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/landing",
     element: <LandingPage />,
+  },
+  {
+    path: "/cupboard",
+    element: <Cupboard />,
   },
 ]);
 
