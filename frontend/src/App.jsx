@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import { LandingPage } from "./pages/Home/LandingPage";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
+
 import { CookBook } from "./pages/CookBook/CookBook";
+import { LandingPage } from "./pages/Landing/LandingPage";
+
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/CookBook",
     element: <CookBook />,
+  },
+  {
+    path: "/landing",
+    element: <LandingPage />,
   },
 ]);
 
