@@ -1,0 +1,35 @@
+.fridge-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .fridge-button .hover-text {
+    display: none;
+  }
+  
+  .fridge-button .default-text {
+    display: inline;
+  }
+  
+  .fridge-button:hover .hover-text {
+    display: inline;
+  }
+  
+  .fridge-button:hover .default-text {
+    display: none;
+  }
+  
+  .fridge-button:hover {
+    background-color: #dfe5ec;
+  }
+  
