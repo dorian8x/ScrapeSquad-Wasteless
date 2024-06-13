@@ -25,24 +25,26 @@ export const SignupPage = () => {
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div id="username">
-          <label htmlFor="username">Full Name:</label>
+          <label htmlFor="username">Username:</label>
           <input
             id="username"
             type="text"
+            required
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          required
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="text"
+            required
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div>
           <label htmlFor="password">Password:</label>

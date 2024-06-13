@@ -3,7 +3,7 @@ import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
 import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
 import './Cupboard.css';
 
-function Cupboard() {
+const Cupboard = () => {
     const [widgets, setWidgets] = useState<string[]>([]);
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
