@@ -1,0 +1,18 @@
+.buttons-container {
+    position: fixed;
+    top: 40px;
+    right: 30px;
+    display: flex;
+}
+
+.round-button {
+    background-color: #045006;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.3em;
+}

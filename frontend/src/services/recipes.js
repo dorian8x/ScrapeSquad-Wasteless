@@ -9,7 +9,7 @@ export const getRecipes = async (token) => {
     },
   };
 
-  const response = await fetch(`${BACKEND_URL}/cookbook`, requestOptions);
+  const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
 
   if (response.status !== 200) {
     throw new Error("Unable to fetch posts");
