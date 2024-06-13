@@ -1,25 +1,25 @@
 import './CustomDropdown.css';
 
-const widgetOptions = ["Widget A", "Widget B", "Widget C"];
+const ingredientOptions = ["Ingredient A", "Ingredient B", "Ingredient C"];
 
 function CustomDropdown({ onDragStart }) {
     return (
         <div className="custom-dropdown">
-        <button className="dropdown-button">Select Widget</button>
-        <div className="dropdown-content">
-            {widgetOptions.map((widgetType) => (
-            <div
-                key={widgetType}
-                className="dropdown-item"
-                draggable
-                onDragStart={(e) => onDragStart(e, widgetType)}
-            >
-                {widgetType}
+            <button className="dropdown-button">Choose Ingredient</button>
+            <div className="dropdown-content">
+                {ingredientOptions.map((ingredientType) => (
+                    <div
+                        key={ingredientType}
+                        className="dropdown-item"
+                        draggable
+                        onDragStart={(e) => onDragStart(e, ingredientType)}
+                    >
+                        {ingredientType}
+                    </div>
+                ))}
             </div>
-            ))}
-        </div>
         </div>
     );
-    }
+}
 
 export default CustomDropdown;
