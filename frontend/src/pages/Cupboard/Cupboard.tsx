@@ -10,6 +10,7 @@ export function Cupboard() {
     const [ing2, setIng2] = useState("");
     const [foundRecipes, setFoundRecipes] = useState<string[]>([]);
     // const token = localStorage.getItem("token");
+    const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         //e.dataTransfer is an object that holds the data being dragged
@@ -43,6 +44,11 @@ export function Cupboard() {
         //updates the state with new arr
         setWidgets(updatedWidgets);
     }
+    function handleClearAll() {
+        setWidgets([]);
+    }
+
+    const numberOfShelves = Math.ceil(widgets.length / itemsPerShelf);
 
     const handleSubmitIngredients = async (event) => {
         event.preventDefault();
@@ -61,16 +67,27 @@ export function Cupboard() {
         <>
             <div className="cupboard">
                 <CustomDropdown onDragStart={handleOnDrag} />
-                <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
-                    {widgets.map((widget, index) => (
-                        <DroppedWidget
-                            key={index}
-                            widget={widget}
-                            index={index}
-                            onRemove={handleRemoveWidget}
-                        />
-                    ))}
-                </div>
+                <button className="clear-button" onClick={handleClearAll}>Clear All</button>
+                <div 
+                className="page" 
+                onDrop={handleOnDrop} 
+                onDragOver={handleDragOver}
+            >
+                {Array.from({ length: numberOfShelves }, (_, shelfIndex) => (
+                    <div className="shelf" key={shelfIndex}>
+                        {widgets
+                            .slice(shelfIndex * itemsPerShelf, (shelfIndex + 1) * itemsPerShelf)
+                            .map((widget, index) => (
+                                <DroppedWidget
+                                    key={index + shelfIndex * itemsPerShelf}
+                                    widget={widget}
+                                    index={index + shelfIndex * itemsPerShelf}
+                                    onRemove={handleRemoveWidget}
+                                />
+                            ))}
+                    </div>
+                ))}
+            </div>
             </div>
             <div className="home">
                 <p>{foundRecipes.map((recipe) => recipe.idMeal)}</p>
