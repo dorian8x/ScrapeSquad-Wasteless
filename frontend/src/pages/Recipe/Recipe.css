@@ -8,14 +8,13 @@
 .header {
     background-color: transparent;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     position: relative;
 }
 
 .header-content {
     position: relative;
     height: 400px;
-    /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
     display: flex;

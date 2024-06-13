@@ -18,3 +18,23 @@ export const getRecipes = async (token) => {
   const data = await response.json();
   return data;
 };
+
+export const saveRecipe = async (token, recipe) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(recipe),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
+
+  if (response.status !== 201) {
+    throw new Error("Unable to save recipe");
+  }
+
+  const data = await response.json();
+  return data;
+};
