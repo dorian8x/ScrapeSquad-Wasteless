@@ -5,16 +5,16 @@ import './Cupboard.css';
 
 const Cupboard = () => {
     const [widgets, setWidgets] = useState<string[]>([]);
+    const itemsPerShelf = 3; // Adjust this number to control how many items fit on one shelf
 
-    function handleOnDrag(e: React.DragEvent, widgetType: string) {
-        e.dataTransfer.setData("widgetType", widgetType);
+    function handleOnDrag(e: React.DragEvent, ingredientType: string) {
+        e.dataTransfer.setData("ingredientType", ingredientType);
     }
 
     function handleOnDrop(e: React.DragEvent) {
         e.preventDefault();
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
-        console.log("widgetType", widgetType);
-        setWidgets([...widgets, widgetType]);
+        const ingredientType = e.dataTransfer.getData("ingredientType") as string;
+        setWidgets([...widgets, ingredientType]);
     }
 
     function handleDragOver(e: React.DragEvent) {
@@ -26,21 +26,33 @@ const Cupboard = () => {
         setWidgets(updatedWidgets);
     }
 
+    const numberOfShelves = Math.ceil(widgets.length / itemsPerShelf);
+
     return (
         <div className="cupboard">
-        <CustomDropdown onDragStart={handleOnDrag} />
-        <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
-            {widgets.map((widget, index) => (
-            <DroppedWidget
-                key={index}
-                widget={widget}
-                index={index}
-                onRemove={handleRemoveWidget}
-            />
-            ))}
-        </div>
+            <CustomDropdown onDragStart={handleOnDrag} />
+            <div 
+                className="page" 
+                onDrop={handleOnDrop} 
+                onDragOver={handleDragOver}
+            >
+                {Array.from({ length: numberOfShelves }, (_, shelfIndex) => (
+                    <div className="shelf" key={shelfIndex}>
+                        {widgets
+                            .slice(shelfIndex * itemsPerShelf, (shelfIndex + 1) * itemsPerShelf)
+                            .map((widget, index) => (
+                                <DroppedWidget
+                                    key={index + shelfIndex * itemsPerShelf}
+                                    widget={widget}
+                                    index={index + shelfIndex * itemsPerShelf}
+                                    onRemove={handleRemoveWidget}
+                                />
+                            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
-    }
+}
 
 export default Cupboard;
