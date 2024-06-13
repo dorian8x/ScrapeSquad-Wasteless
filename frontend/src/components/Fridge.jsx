@@ -17,10 +17,11 @@ const Fridge = () => {
       <motion.div
         className="fridge"
         animate={{ x: isOpen ? 100 : 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
       >
         <FridgeDoor onClick={handleDoorClick} isOpen={isOpen} />
         <FridgeContent isOpen={isOpen} />
+
       </motion.div>
     </div>
   );
