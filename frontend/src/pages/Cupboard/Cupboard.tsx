@@ -8,21 +8,34 @@ const Cupboard = () => {
     const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
 
     function handleOnDrag(e: React.DragEvent, ingredientType: string) {
+        //e.dataTransfer is an object that holds the data being dragged
+        //setData sets the data type of the data being dragged
+        //We then store the widgetType (e.g., "Widget A", Widget B") in the dataTransfer object.
         e.dataTransfer.setData("ingredientType", ingredientType);
     }
 
     function handleOnDrop(e: React.DragEvent) {
+        // prevents the default behaviour to allow dropping
         e.preventDefault();
+        //retrieve the widgetType from the dataTransfer object
+        //this is the same data that was set in handleOnDrag
         const ingredientType = e.dataTransfer.getData("ingredientType") as string;
+        //log widgetType for debugging
+        //Update the state to include new widget
+        //the setWidgets function is used to update the state
+        //Here, we spread the existing widgets and add the new widget type to the end
         setWidgets([...widgets, ingredientType]);
     }
 
     function handleDragOver(e: React.DragEvent) {
+        // prevents the default behaviour to allow dropping
         e.preventDefault();
     }
 
     function handleRemoveWidget(index: number) {
+        //Creates a new arr excld the widget at specified index
         const updatedWidgets = widgets.filter((_, i) => i !== index);
+        //updates the state with new arr
         setWidgets(updatedWidgets);
     }
 
