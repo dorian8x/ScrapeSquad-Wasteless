@@ -5,7 +5,7 @@ import './Cupboard.css';
 
 const Cupboard = () => {
     const [widgets, setWidgets] = useState<string[]>([]);
-    const itemsPerShelf = 3; // Adjust this number to control how many items fit on one shelf
+    const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
 
     function handleOnDrag(e: React.DragEvent, ingredientType: string) {
         e.dataTransfer.setData("ingredientType", ingredientType);
@@ -26,11 +26,16 @@ const Cupboard = () => {
         setWidgets(updatedWidgets);
     }
 
+    function handleClearAll() {
+        setWidgets([]);
+    }
+
     const numberOfShelves = Math.ceil(widgets.length / itemsPerShelf);
 
     return (
         <div className="cupboard">
             <CustomDropdown onDragStart={handleOnDrag} />
+            <button className="clear-button" onClick={handleClearAll}>Clear All</button>
             <div 
                 className="page" 
                 onDrop={handleOnDrop} 

@@ -33,10 +33,16 @@
 }
 
 .shelf > .dropped-widget {
-    flex: 1 0 calc(33.333% - 20px); /* Adjust according to the itemsPerShelf */
+    flex: 1 0 calc(20% - 20px); /* Adjust according to the itemsPerShelf, here 20% for 5 items per shelf */
 }
 
 .page.drag-over {
     border-color: #007c91;
     background-color: #e0f7fa;
 }
+
+.clear-button {
+    background-color: #e57373;
+    border: none;
+    color: white;
+    cursor:
