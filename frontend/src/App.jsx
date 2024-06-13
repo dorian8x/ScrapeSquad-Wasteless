@@ -1,16 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import { HomePage } from "./pages/Home/HomePage";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
-import { FeedPage } from "./pages/Feed/FeedPage";
+import Cupboard from "./pages/Cupboard/Cupboard"
+import { CookBook } from "./pages/CookBook/CookBook";
+import { LandingPage } from "./pages/Landing/LandingPage";
+
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <LandingPage />,
   },
   {
     path: "/login",
@@ -21,8 +23,16 @@ const router = createBrowserRouter([
     element: <SignupPage />,
   },
   {
-    path: "/posts",
-    element: <FeedPage />,
+    path: "/CookBook",
+    element: <CookBook />,
+  },
+  {
+    path: "/landing",
+    element: <LandingPage />,
+  },
+  {
+    path: "/cupboard",
+    element: <Cupboard />,
   },
 ]);
 
