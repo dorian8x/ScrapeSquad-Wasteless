@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
 import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
 import './Cupboard.css';
+import { findRecipes } from "../../services/recipes";
 
-const Cupboard = () => {
+export function Cupboard() {
     const [widgets, setWidgets] = useState<string[]>([]);
+    const [ing1, setIng1] = useState("");
+    const [ing2, setIng2] = useState("");
+    const [foundRecipes, setFoundRecipes] = useState<string[]>([]);
+    // const token = localStorage.getItem("token");
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         //e.dataTransfer is an object that holds the data being dragged
@@ -39,21 +44,41 @@ const Cupboard = () => {
         setWidgets(updatedWidgets);
     }
 
+    const handleSubmitIngredients = async (event) => {
+        event.preventDefault();
+        try {
+            await findRecipes(widgets)
+            .then((recipes) => {
+                console.log("recipes is (and foundRecipes is going to be):", recipes)
+                setFoundRecipes(recipes);
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    
     return (
-        <div className="cupboard">
-        <CustomDropdown onDragStart={handleOnDrag} />
-        <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
-            {widgets.map((widget, index) => (
-            <DroppedWidget
-                key={index}
-                widget={widget}
-                index={index}
-                onRemove={handleRemoveWidget}
-            />
-            ))}
-        </div>
-        </div>
+        <>
+            <div className="cupboard">
+                <CustomDropdown onDragStart={handleOnDrag} />
+                <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
+                    {widgets.map((widget, index) => (
+                        <DroppedWidget
+                            key={index}
+                            widget={widget}
+                            index={index}
+                            onRemove={handleRemoveWidget}
+                        />
+                    ))}
+                </div>
+            </div>
+            <div className="home">
+                <p>{foundRecipes.map((recipe) => recipe.idMeal)}</p>
+                <form onSubmit={handleSubmitIngredients}>
+                    {/* <input type="range" min="" max="" /> // a slider, for cooking time maybe? */}
+                    <input role="submit-button" id="submit" type="submit" value="Submit" />
+                </form>
+            </div>
+        </>
     );
-    }
-
-export default Cupboard;
+}

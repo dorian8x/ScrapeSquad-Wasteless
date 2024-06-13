@@ -7,7 +7,7 @@ export const LandingPage = () => {
     <div className="landing">
       <h1>Welcome to Sustainabite!</h1>
       <p>
-        <Link to="/home" className="fridge-button">
+        <Link to="/cupboard" className="fridge-button">
           <span className="default-text">What's in your fridge?</span>
           <span className="hover-text">Check out all the amazing recipes you can make with what you've got available</span>
         </Link>

@@ -1,12 +1,11 @@
 // docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const findRecipes = async (ing1, ing2) => {
-    const payload = {
-        ing1: ing1,
-        ing2: ing2,
-    };
-
+export const findRecipes = async (ingredientArray) => {    
+    const payload = {};
+    ingredientArray.forEach((value, index) => {
+        payload[index] = value;
+    });
     const requestOptions = {
         method: "POST",
         headers: {
