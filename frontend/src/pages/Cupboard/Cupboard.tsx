@@ -3,12 +3,12 @@ import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
 import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
 import './Cupboard.css';
 import { findRecipes } from "../../services/recipes";
+import { useNavigate } from "react-router-dom";
 
 export function Cupboard() {
     const [widgets, setWidgets] = useState<string[]>([]);
-    const [ing1, setIng1] = useState("");
-    const [ing2, setIng2] = useState("");
     const [foundRecipes, setFoundRecipes] = useState<string[]>([]);
+    const navigate = useNavigate();
     // const token = localStorage.getItem("token");
     const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
 
@@ -51,7 +51,14 @@ export function Cupboard() {
     const numberOfShelves = Math.ceil(widgets.length / itemsPerShelf);
 
     const handleSubmitIngredients = async (event) => {
-        event.preventDefault();
+        // console.log(event);
+        // event.preventDefault();
+        // navigate("/searchresults"), {
+        //     state : {
+        //         ingredient: widgets
+        //     }
+            
+        // } 
         try {
             await findRecipes(widgets)
             .then((recipes) => {
@@ -90,12 +97,12 @@ export function Cupboard() {
             </div>
             </div>
             <div className="home">
-                <p>{foundRecipes.map((recipe) => recipe.idMeal)}</p>
                 <form onSubmit={handleSubmitIngredients}>
                     {/* <input type="range" min="" max="" /> // a slider, for cooking time maybe? */}
                     <input role="submit-button" id="submit" type="submit" value="Submit" />
                 </form>
             </div>
+            <p>{foundRecipes.map((recipe) => recipe.idMeal)}</p>
         </>
     );
 }
