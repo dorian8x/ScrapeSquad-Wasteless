@@ -1,41 +1,41 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { getRecipes } from "../../services/cookbook";
-import Recipes from "../../components/Recipes";
+// Not worked on the below services yet - focused on frontend 
+import { getRecipes } from "../../services/cookbook.js";
+import Recipes from "../../components/Recipe";
 
 export const CookBook = () => {
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getRecipes(token)
-        .then((data) => {
-          setRecipes(data.posts);
-          localStorage.setItem("token", data.token);
-        })
-        .catch((err) => {
+    const fetchRecipes = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const recipeData = await getRecipes(token);
+          setRecipes(recipeData); 
+        } catch (err) {
           console.error(err);
           navigate("/login");
-        });
-    }
-  }, [navigate]);
+        }
+      } else {
+        navigate("/login");
+      }
+    };
 
-  const token = localStorage.getItem("token");
-  if (!token) {
-    navigate("/login");
-    return;
-  }
+    fetchRecipes();
+  }, [navigate]);
 
   return (
     <>
       <h2>Saved Recipes</h2>
       <div className="cookbook" role="cookbook">
-        {recipes.map((recipes) => (
-          <Recipes recipes={recipes} key={recipes._id} />
-        ))}
+        {recipes.length > 0 ? (
+          recipes.map((recipe) => <Recipes recipe={recipe} key={recipe._id} />)
+        ) : (
+          <p>No recipes saved yet.</p>
+        )}
       </div>
     </>
   );
