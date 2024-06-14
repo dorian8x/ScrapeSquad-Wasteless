@@ -1,18 +1,48 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import Footer from '../../components/Footer';
 import MediterraneanSalad from '../../images/MediterraneanSalad.jpeg';
 import Buttons from '../../components/Button';
+import { useNavigate }  from 'react-router-dom';
+import { saveRecipe } from '../../services/recipes';
 import './Recipe.css'; 
 
 const Recipe = () => {
-  const handleButton1Click = () => {
-    // Handle button 1 click action here
-    console.log('Button 1 clicked');
-  };
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
+
+  const handleButton1Click = async () => {
+    console.log('Clicked');
+    try {
+      const token = localStorage.getItem('token');
+        if (token) {
+            const recipe = {
+                title: " ",
+                ingredients: ['', '', '', '', '', '', '', '', ''],
+                instructions: " ",
+            };
+        
+            await saveRecipe(token, recipe);
+            setSuccess('Recipe saved successfully');
+        } else {
+          navigate("/login");
+        }
+        } catch (error) {
+      console.error(error);
+      setError('Failed to save recipe: ' + error.message);
+      setSuccess(null);
+    }
+        
+      };
 
   const handleButton2Click = () => {
-    // Handle button 2 click action here
-    console.log('Button 2 clicked');
+    console.log('Clicked');
+    
+  };
+
+  const handleButton3Click = () => {
+    console.log('Clicked');
   };
 
   return (
@@ -20,7 +50,7 @@ const Recipe = () => {
       <header className="header">
         <div className="header-content" style={{ backgroundImage: `url(${MediterraneanSalad})` }}>
           <h1 className="header-title">Mediterranean Salad</h1>
-          <Buttons onButton1Click={handleButton1Click} onButton2Click={handleButton2Click} />
+          <Buttons onButton1Click={handleButton1Click} onButton2Click={handleButton2Click} onButton3Click={handleButton3Click} />
         </div>
       </header>
       <div className="recipe-content">
@@ -36,7 +66,7 @@ const Recipe = () => {
             <li>Ingredient 7</li>
             <li>Ingredient 8</li>
             <li>Ingredient 9</li>
-            {/* Add more ingredients as needed */}
+            
           </ul>
         </div>
         <div className="instructions">
@@ -46,15 +76,16 @@ const Recipe = () => {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
           <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
-                  <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
+          <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
           <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
           <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec justo vel ante consectetur blandit sed vitae diam.</p>
           <p>Nulla varius pharetra urna, non eleifend arcu. Fusce a ligula eu mi rutrum sollicitudin. Vivamus eleifend tortor vel neque auctor lacinia.</p>
         </div>
-      </div>
+        </div>
+          
       <Footer />
     </div>
   );
