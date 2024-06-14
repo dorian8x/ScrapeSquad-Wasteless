@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const usersRouter = require("./routes/users");
-// const postsRouter = require("./routes/posts");  // replace with recipes once implemented
+const recipesRouter = require("./routes/recipes"); // Add this line
 const authenticationRouter = require("./routes/authentication");
 // const tokenChecker = require("./middleware/tokenChecker");  // not needed until recipes are implemented
 
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 // API Routes
 app.use("/users", usersRouter);
-// app.use("/posts", tokenChecker, postsRouter);  // replace with recipes once implemented
+app.use("/recipes", recipesRouter); // Add this line
 app.use("/tokens", authenticationRouter);
 
 // 404 Handler
