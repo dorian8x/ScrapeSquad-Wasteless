@@ -6,7 +6,8 @@ import { SignupPage } from "./pages/Signup/SignupPage";
 import Cupboard from "./pages/Cupboard/Cupboard";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import  Recipe  from "./pages/Recipe/Recipe";
-import CookbookPage from "./pages/CookBook/CookbookPage"; // Import the new CookbookPage
+import CookbookPage from "./pages/CookBook/CookbookPage";
+
 
 // docs: https://reactrouter.com/en/main/start/overview
 const router = createBrowserRouter([

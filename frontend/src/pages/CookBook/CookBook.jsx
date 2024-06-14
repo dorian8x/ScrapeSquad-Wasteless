@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getRecipes } from "../../services/cookbook";
+import  getRecipes  from "../../services/recipes";
 import Recipes from "../../components/Recipes";
 
 export const CookBook = () => {
