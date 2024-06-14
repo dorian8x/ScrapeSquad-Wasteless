@@ -1,13 +1,13 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
-const Recipe = ({ recipe }) => {
+const props = (props) => {
   return (
-    <div className="recipe-card">
-      <img src={recipe.picture} alt={recipe.title} className="recipe-image" />
-      <h3>{recipe.title}</h3>
-      <p>ID: {recipe._id}</p>
+    <div className="props-card">
+      {/* <img src={props.picture} alt={props.title} className="props-image" /> */}
+      <Link to="/somewhere, ask Jose">{props.title}</Link>
+      <p>ID: {props.recipeId}</p> {/* hide this later */}
     </div>
   );
 };
 
-export default Recipe;
+export default props;
