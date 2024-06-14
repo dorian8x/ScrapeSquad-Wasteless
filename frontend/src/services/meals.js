@@ -19,11 +19,33 @@ export const findMeals = async (ingredientArray) => {
     // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
     if (response.status === 200) {
         let data = await response.json();
-        console.log("data is:", data)
         return data.recipes;
     } else {
         throw new Error(
         `Received status ${response.status} when logging in. Expected 201`
+        );
+    }
+};
+
+export const findMealByID = async (mealID) => {    
+    const payload = {
+        mealID: mealID
+    };
+    const requestOptions = {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+    };
+    const response = await fetch(`${BACKEND_URL}/meals`, requestOptions);
+    if (response.status === 200) {
+        let data = await response.json();
+        console.log("data is:", data)
+        return data.foundMeal;
+    } else {
+        throw new Error(
+        `Received status ${response.status} when logging in. Expected 200`
         );
     }
 };

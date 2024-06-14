@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 // import Footer from '../../components/Footer/Footer';
-import { findMeals } from "../../services/meals";
+import { findMealByID } from "../../services/meals";
 import './Recipe.css';
 
 export const Recipe = () => {
   const [meal, setMeal] = useState({});
   const navigate = useNavigate();
-  const meal_id = useParams();
+  const meal_id = useParams().id;
 
   useEffect(() => {
-    findMeals(meal_id)
+    findMealByID(meal_id)
       .then((data) => {
-        setMeal(data.meal);
+        setMeal(data);
+        console.log("meal", meal)
       })
       .catch((err) => {
         console.error(err);
         navigate("/cupboard");
       });
-}, [navigate, meal_id])
+}, [navigate])
 
   return (
     <div className="recipe">
       <header className="header">
-        <div className="header-content" style={{ backgroundImage: `url` }}>
-          <h1 className="header-title">Mediterranean Salad</h1>
-          {/* <Buttons onButton1Click={handleButton1Click} onButton2Click={handleButton2Click} onButton3Click={handleButton3Click} /> */}
+        <div className="header-content" style={{ backgroundImage: `url(${meal.strMealThumb})` }}>
+          <h1 className="header-title">{meal.strMeal}</h1>
         </div>
       </header>
       <div className="recipe-content">
         <div className="ingredients">
           <h2>Ingredients:</h2>
           <ul>
-            {meal.ingredients.map((ing) => {<li>{ing.amount}</li>})}
+            {/* {meal.ingredientArray.map((ing) => {<li>{ing}</li>})} */}
           </ul>
         </div>
         <div className="instructions">
           <h2>Instructions:</h2>
-
+            {meal.strInstructions}
         </div>
-        </div>
-      
+      </div>
+          {/* <Buttons onButton1Click={handleButton1Click}onButton3Click={handleButton3Click} /> */}
     </div>
   );
 };
