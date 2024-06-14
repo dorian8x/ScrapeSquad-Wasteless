@@ -3,8 +3,7 @@ const RecipesController = require("../controllers/recipes");
 
 const router = express.Router();
 
-router.get("/", RecipesController.getAllRecipes);
+router.get("/", RecipesController.getAllSavedRecipesByUser_id);
 router.post("/", RecipesController.createRecipe);
-router.post("/external", RecipesController.findRecipes);
 
 module.exports = router;

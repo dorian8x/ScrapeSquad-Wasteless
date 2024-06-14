@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import foodImage1 from "../../assets/image1.jpg";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 
 export const LandingPage = () => {
   return (

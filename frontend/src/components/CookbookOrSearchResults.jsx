@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { getRecipes } from '../services/recipeService';
-import Recipe from './Recipe';
+import { useEffect, useState } from 'react';
+import { getRecipes } from '../services/recipes';
+import RecipeTile from './RecipeTile';
 import RecipeForm from './RecipeForm';
 
-const Cookbook = () => {
+export const CookbookOrSearchResults = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -23,11 +23,9 @@ const Cookbook = () => {
       <RecipeForm onRecipeAdded={handleRecipeAdded} />
       <div className="recipe-list">
         {recipes.map((recipe) => (
-          <Recipe key={recipe._id} recipe={recipe} />
+          <RecipeTile key={recipe._id} recipe={recipe} />
         ))}
       </div>
     </div>
   );
 };
-
-export default Cookbook;

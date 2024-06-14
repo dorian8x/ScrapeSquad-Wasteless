@@ -35,6 +35,5 @@ function CustomDropdown({ onDragStart }) {
         </div>
     );
 }
-}
 
 export default CustomDropdown;

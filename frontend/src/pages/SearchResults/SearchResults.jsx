@@ -1,4 +1,4 @@
-import Recipe from "../../components/Recipe";
+import RecipeTile from "../../components/RecipeTile";
 // import { useNavigate, useLocation } from "react-router-dom";
 // import { useEffect, useState  } from "react";
 // import { findRecipes } from "../../services/recipes";
@@ -22,7 +22,7 @@ export function SearchResults(props) { //Props is an array of objects
         <div>
             <h1>Search Results</h1>
             {props.props.map((recipe, index) => (
-                <Recipe
+                <RecipeTile
                     key={index}
                     recipeId={recipe.idMeal}
                     picture={recipe.strMealThumb}
