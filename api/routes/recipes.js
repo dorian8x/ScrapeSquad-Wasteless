@@ -1,9 +1,10 @@
 const express = require("express");
-const router = express.Router();
-
 const RecipesController = require("../controllers/recipes");
 
-router.post("/", RecipesController.findRecipes);
+const router = express.Router();
+
+router.get("/", RecipesController.getAllRecipes);
+router.post("/", RecipesController.createRecipe);
 router.post("/external", RecipesController.findRecipes);
 
 module.exports = router;

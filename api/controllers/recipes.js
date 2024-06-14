@@ -15,9 +15,6 @@ const getMealsByIngredient = async (ingredient) => {
 };
 
 const findRecipes = async (req, res) => {
-  // console.log("req is:", req);
-  // console.log("req.body is:", req.body);
-  // console.log("Object.values(req.body) is:", Object.values(req.body));
   const wantedIngredients = Object.values(req.body);
   let foundRecipes = []; // will be an array of arrays, one for each ingredient given
   for (let i = 0 ; i < wantedIngredients.length ; i++) { // for each ingredient
@@ -50,8 +47,34 @@ const createRecipe = async (req, res) => {
 
   const newToken = generateToken(req.user_id);
   res.status(201).json({ message: "Recipe created", token: newToken });
-};
-
+  };
+  
+  
+  const createRecipe = (req, res) => {
+    const { title, picture } = req.body;
+    
+    const recipe = new Recipe({ title, picture });
+    recipe.save()
+    .then((newRecipe) => {
+      res.status(201).json(newRecipe);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(400).json({ message: "Something went wrong" });
+        });
+        };
+        
+  const getAllRecipes = (req, res) => {
+    Recipe.find()
+      .then((recipes) => {
+        res.json(recipes);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json({ message: "Something went wrong" });
+      });
+  };
+  
 const RecipesController = {
   findRecipes: findRecipes,
   createRecipe: createRecipe,
