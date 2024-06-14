@@ -7,6 +7,7 @@ import { Cupboard } from "./pages/Cupboard/Cupboard";
 import { CookBook } from "./pages/CookBook/CookBook";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { SearchResults } from "./pages/SearchResults/SearchResults";
+import  Recipe  from "./pages/Recipe/Recipe";
 
 
 // docs: https://reactrouter.com/en/main/start/overview
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/searchresults",
     element: <SearchResults />,
+  },
+  {
+    path: "/recipe",
+    element: <Recipe />,
   },
 ]);
 
