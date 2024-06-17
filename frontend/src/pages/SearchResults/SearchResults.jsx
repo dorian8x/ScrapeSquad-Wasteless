@@ -1,34 +1,24 @@
+import React from 'react';
 import RecipeTile from "../../components/RecipeTile";
-// import { useNavigate, useLocation } from "react-router-dom";
-// import { useEffect, useState  } from "react";
-// import { findRecipes } from "../../services/recipes";
 
+export function SearchResults({ recipes }) { // Destructure the recipes prop
+  console.log('SearchResults recipes:', recipes); // Log the recipes
 
-export function SearchResults(props) { //Props is an array of objects
-    // const [foundRecipes, setFoundRecipes] = useState([])
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // let ingredientArr = location.state.ingredient
+  if (!recipes || recipes.length === 0) {
+    return <div>No recipes found.</div>;
+  }
 
-
-    // useEffect(() => {
-    //         findRecipes(props.ingredientArr)
-    //         .then((recipes) => {
-    //             setFoundRecipes(recipes);
-    //         })
-    //     }, [navigate]);
-
-    return (
-        <div>
-            <h1>Search Results</h1>
-            {props.props.map((recipe, index) => (
-                <RecipeTile
-                    key={index}
-                    recipeId={recipe.idMeal}
-                    picture={recipe.strMealThumb}
-                    title={recipe.strMeal}
-                />
-            ))}
-        </div>
-    )
+  return (
+    <div>
+      <h1>Search Results</h1>
+      <div className="recipe-list">
+        {recipes.map((recipe, index) => (
+          <RecipeTile
+            key={recipe._id} // Use a unique key
+            recipe={recipe} // Pass the whole recipe object
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

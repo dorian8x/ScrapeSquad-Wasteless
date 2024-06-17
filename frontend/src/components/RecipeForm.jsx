@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { saveRecipe } from '../services/recipes';
 
-const RecipeForm = ({ onRecipeAdded }) => {
+const RecipeForm = ({ token, onRecipeAdded }) => {
   const [title, setTitle] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [instructions, setInstructions] = useState('');
   const [picture, setPicture] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecipe = await saveRecipe({ title, picture });
+    const newRecipe = await saveRecipe(token, { title, ingredients, instructions, picture });
     onRecipeAdded(newRecipe);
     setTitle('');
+    setIngredients('');
+    setInstructions('');
     setPicture('');
   };
 
@@ -20,6 +24,20 @@ const RecipeForm = ({ onRecipeAdded }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
+        required
+      />
+      <input
+        type="text"
+        value={ingredients}
+        onChange={(e) => setIngredients(e.target.value)}
+        placeholder="Ingredients"
+        required
+      />
+      <input
+        type="text"
+        value={instructions}
+        onChange={(e) => setInstructions(e.target.value)}
+        placeholder="Instructions"
         required
       />
       <input

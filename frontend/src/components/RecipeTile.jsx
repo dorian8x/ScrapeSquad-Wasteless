@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
 
-const RecipeTile = (props) => {
+const RecipeTile = ({ recipe }) => {
+  console.log('Rendering recipe:', recipe);
+
+  if (!recipe) {
+    return null; // Or render a placeholder
+  }
+
+  const { picture, title, _id } = recipe;
+
   return (
     <div className="recipe-card">
-      <img src={props.picture} alt={props.title} className="recipe-image" />
-      <Link to={`/recipe/${props.recipeId}`}>{props.title}</Link>
-      <p>ID: {props.recipeId}</p> {/* hide this later */}
+      {picture ? (
+        <img src={picture} alt={title} className="recipe-image" />
+      ) : (
+        <div className="placeholder-image">No Image</div>
+      )}
+      <Link to={`/recipe/${_id}`}>{title}</Link>
+      <p>ID: {_id}</p> {/* hide this later */}
     </div>
   );
 };
