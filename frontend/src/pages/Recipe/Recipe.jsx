@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
-// import Footer from '../../components/Footer/Footer';
+import { useNavigate, useParams } from "react-router-dom";
 import { findMealByID } from "../../services/meals";
+import SaveRecipeButton from '../../components/SaveRecipeButton/SaveRecipeButton';
 import './Recipe.css';
 
 export const Recipe = () => {
   const [meal, setMeal] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const meal_id = useParams().id;
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);  // Update the logged-in state based on the presence of the token
+
     findMealByID(meal_id)
       .then((data) => {
         setMeal(data);
-        console.log("meal", meal)
+        console.log("meal", meal);
       })
       .catch((err) => {
         console.error(err);
         navigate("/cupboard");
       });
-}, [navigate])
+  }, [navigate]);
 
   return (
     <div className="recipe">
@@ -32,15 +36,15 @@ export const Recipe = () => {
         <div className="ingredients">
           <h2>Ingredients:</h2>
           <ul>
-            {/* {meal.ingredientArray.map((ing) => {<li>{ing}</li>})} */}
+            {/* {meal.ingredientArray.map((ing) => <li key={ing}>{ing}</li>)} */}
           </ul>
         </div>
         <div className="instructions">
           <h2>Instructions:</h2>
-            {meal.strInstructions}
+          {meal.strInstructions}
         </div>
       </div>
-          {/* <Buttons onButton1Click={handleButton1Click}onButton3Click={handleButton3Click} /> */}
+      {isLoggedIn && <SaveRecipeButton token={localStorage.getItem('token')} recipe={meal} />}
     </div>
   );
 };
