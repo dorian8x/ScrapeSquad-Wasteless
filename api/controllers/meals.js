@@ -71,9 +71,7 @@ const findMealBy_id = async (req, res) => {
         }
         const ingredientArray = Object.values(foundMeal).slice(9, 29)
         const measureArray = Object.values(foundMeal).slice(29, 49)
-        console.log("measureArray is:", measureArray)
-        ingredientArray.map((ing, index) => `${measureArray[index]} ${ing}`)
-        foundMeal["ingredientArray"] = ingredientArray;
+        foundMeal["ingredientArray"] = ingredientArray.filter((ing) => ing).map((ing, index) => `${measureArray[index]} ${ing}`);
         console.log("foundMeal is:", foundMeal)
         res.status(200).json({ message: "Recipe fetched successfully", foundMeal: foundMeal });
     } catch (error) {

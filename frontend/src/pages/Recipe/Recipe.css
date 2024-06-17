@@ -50,13 +50,9 @@
 
 .instructions {
     width: 70%;
+    white-space: pre-wrap;
 }
 
 .instructions h2 {
     text-align: center;
 }
-
-.instructions p {
-    line-height: 1.3;
-}
-

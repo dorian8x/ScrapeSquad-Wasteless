@@ -41,7 +41,6 @@ export const findMealByID = async (mealID) => {
     const response = await fetch(`${BACKEND_URL}/meals`, requestOptions);
     if (response.status === 200) {
         let data = await response.json();
-        console.log("data is:", data)
         return data.foundMeal;
     } else {
         throw new Error(
