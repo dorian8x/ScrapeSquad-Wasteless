@@ -1,22 +1,36 @@
+import { useState } from 'react';
 import './CustomDropdown.css';
 
-const ingredientOptions = ["Ingredient A", "Ingredient B", "Ingredient C"];
+const widgetOptions = ["mayonnaise", "cucumber"];
 
 function CustomDropdown({ onDragStart }) {
+    const [showWidgets, setShowWidgets] = useState(false);
+
+    const toggleIngredients = () => {
+        setShowWidgets(!showWidgets);
+    };
+
     return (
         <div className="custom-dropdown">
-            <button className="dropdown-button">Choose Ingredient</button>
-            <div className="dropdown-content">
-                {ingredientOptions.map((ingredientType) => (
-                    <div
-                        key={ingredientType}
-                        className="dropdown-item"
-                        draggable
-                        onDragStart={(e) => onDragStart(e, ingredientType)}
-                    >
-                        {ingredientType}
+            <div id="comment-button" className="commentContainer">
+                {!showWidgets &&
+                    <button className="dropdown-button" onClick={toggleIngredients}>Show Ingredients</button>}
+                {showWidgets &&
+                    <button className="dropdown-button" onClick={toggleIngredients}>Hide Ingredients</button>}
+                {showWidgets &&
+                    <div className="dropdown-content">
+                        {widgetOptions.map((widgetType) => (
+                            <div
+                                key={widgetType}
+                                className="dropdown-item"
+                                draggable
+                                onDragStart={(e) => onDragStart(e, widgetType)}
+                            >
+                                {widgetType}
+                            </div>
+                        ))}
                     </div>
-                ))}
+                }
             </div>
         </div>
     );

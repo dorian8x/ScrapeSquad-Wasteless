@@ -1,14 +1,14 @@
 {
-  "name": "acebook-api",
+  "name": "scrapesquad-api",
   "version": "1.0.0",
-  "description": "Backend template for the Makers Acebook project.",
+  "description": "Backend for team ScrapeSquad for Makers Academy's final project.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
     "test": "jest"
   },
-  "author": "Makers Academy",
+  "author": "Scrape Squad",
   "license": "CC-BY-NC-SA-4.0",
   "dependencies": {
     "bcrypt": "^5.1.1",

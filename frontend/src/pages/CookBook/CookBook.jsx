@@ -1,42 +1,11 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { CookbookOrSearchResults } from '../../components/CookbookOrSearchResults';
 
-import  getRecipes  from "../../services/recipes";
-import Recipes from "../../components/Recipes";
-
-export const CookBook = () => {
-  const [recipes, setRecipes] = useState([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getRecipes(token)
-        .then((data) => {
-          setRecipes(data.posts);
-          localStorage.setItem("token", data.token);
-        })
-        .catch((err) => {
-          console.error(err);
-          navigate("/login");
-        });
-    }
-  }, [navigate]);
-
-  const token = localStorage.getItem("token");
-  if (!token) {
-    navigate("/login");
-    return;
-  }
-
+export const Cookbook = () => {
   return (
-    <>
-      <h2>Saved Recipes</h2>
-      <div className="cookbook" role="cookbook">
-        {recipes.map((recipes) => (
-          <Recipes recipes={recipes} key={recipes._id} />
-        ))}
-      </div>
-    </>
+    <div className="cookbook-page">
+      {/* <UserProfile /> */}
+      <h1>My Cookbook</h1>
+      <CookbookOrSearchResults />
+    </div>
   );
 };

@@ -56,9 +56,10 @@ export const SignupPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="passwordValidator">Password must be 8+ characters</p>
-          <p className="passwordValidator">Password must contain at least one uppercase and one lowercase letter</p>
-          <p className="passwordValidator">Password must contain at least one number</p>
+          <p className="passwordValidator">Password must be 8+ characters<br/>
+          Password must contain at least one uppercase letter<br/>
+          Password must contain at least one lowercase letter<br/>
+          Password must contain at least one number</p>
         </div>
         <div>
           <input

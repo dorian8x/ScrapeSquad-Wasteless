@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createRecipe } from '../services/recipeService';
+import { useState } from 'react';
+import { saveRecipe } from '../services/recipes';
 
 const RecipeForm = ({ onRecipeAdded }) => {
   const [title, setTitle] = useState('');
@@ -7,7 +7,7 @@ const RecipeForm = ({ onRecipeAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecipe = await createRecipe({ title, picture });
+    const newRecipe = await saveRecipe({ title, picture });
     onRecipeAdded(newRecipe);
     setTitle('');
     setPicture('');
