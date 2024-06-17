@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './CustomDropdown.css';
 
-const widgetOptions = ["mayonnaise", "cucumber"];
+const widgetOptions = ["beef", "garlic"];
 
 function CustomDropdown({ onDragStart }) {
     const [showWidgets, setShowWidgets] = useState(false);

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
-// import Footer from '../../components/Footer/Footer';
 import { findMealByID } from "../../services/meals";
 import './Recipe.css';
 
@@ -13,7 +12,6 @@ export const Recipe = () => {
     findMealByID(meal_id)
       .then((data) => {
         setMeal(data);
-        console.log("meal", meal)
       })
       .catch((err) => {
         console.error(err);
@@ -32,7 +30,10 @@ export const Recipe = () => {
         <div className="ingredients">
           <h2>Ingredients:</h2>
           <ul>
-            {/* {meal.ingredientArray.map((ing) => {<li>{ing}</li>})} */}
+            {meal.ingredientArray
+            ? meal.ingredientArray.map(
+                (ing, index) => <li key={index}>{ing}</li>)
+              : ""}
           </ul>
         </div>
         <div className="instructions">
