@@ -1,4 +1,3 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getRecipes = async (token) => {
@@ -33,6 +32,26 @@ export const saveRecipe = async (token, recipe) => {
 
   if (response.status !== 201) {
     throw new Error("Unable to save recipe");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const bookmarkRecipe = async (token, recipe) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(recipe),
+  };
+
+  const response = await fetch(`${BACKEND_URL}/recipes/bookmark`, requestOptions);
+
+  if (response.status !== 201) {
+    throw new Error("Failed to bookmark recipe");
   }
 
   const data = await response.json();

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { findMealByID } from "../../services/meals";
+import { bookmarkRecipe } from "../../services/recipes";
 import './Recipe.css';
 
 export const Recipe = () => {
@@ -17,7 +18,25 @@ export const Recipe = () => {
         console.error(err);
         navigate("/cupboard");
       });
-}, [navigate])
+  }, [navigate]);
+
+  const handleBookmark = async () => {
+    try {
+      const recipe = {
+        title: meal.strMeal,
+        picture: meal.strMealThumb,
+        ingredients: meal.ingredientArray,
+        instructions: meal.strInstructions
+      };
+
+      const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
+      await bookmarkRecipe(token, recipe);
+      alert("Recipe bookmarked successfully!");
+    } catch (error) {
+      console.error("Error bookmarking recipe:", error);
+      alert("Error bookmarking recipe.");
+    }
+  };
 
   return (
     <div className="recipe">
@@ -31,17 +50,17 @@ export const Recipe = () => {
           <h2>Ingredients:</h2>
           <ul>
             {meal.ingredientArray
-            ? meal.ingredientArray.map(
+              ? meal.ingredientArray.map(
                 (ing, index) => <li key={index}>{ing}</li>)
               : ""}
           </ul>
         </div>
         <div className="instructions">
           <h2>Instructions:</h2>
-            {meal.strInstructions}
+          {meal.strInstructions}
         </div>
+        <button onClick={handleBookmark}>Bookmark</button>
       </div>
-          {/* <Buttons onButton1Click={handleButton1Click}onButton3Click={handleButton3Click} /> */}
     </div>
   );
 };

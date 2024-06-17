@@ -8,7 +8,6 @@ const createRecipe = async (req, res) => {
   res.status(201).json({ message: "Recipe created", token: newToken });
 };
 
-
 // const createRecipe = (req, res) => {
 //   const { title, picture } = req.body;
 
@@ -32,9 +31,29 @@ const getAllSavedRecipesByUser_id = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+const bookmarkRecipe = async (req, res) => {
+  const { title, picture, ingredients, instructions } = req.body;
+
+  try {
+    const newRecipe = new Recipe({
+      title,
+      picture,
+      ingredients,
+      instructions
+    });
+
+    await newRecipe.save();
+    res.status(201).json({ message: "Recipe bookmarked successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to bookmark recipe", error });
+  }
+};
+
 const RecipesController = {
   createRecipe: createRecipe,
   getAllSavedRecipesByUser_id: getAllSavedRecipesByUser_id,
+  bookmarkRecipe: bookmarkRecipe,
 };
 
 module.exports = RecipesController;
