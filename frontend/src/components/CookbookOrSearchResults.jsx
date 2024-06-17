@@ -9,7 +9,6 @@ export const CookbookOrSearchResults = ({ token }) => {
   useEffect(() => {
     const fetchRecipes = async () => {
       const data = await getRecipes(token);
-      console.log("Fetched recipes:", data); // Log the fetched data
       setRecipes(data.savedRecipes || []); // Extract savedRecipes
     };
     fetchRecipes();
@@ -18,8 +17,6 @@ export const CookbookOrSearchResults = ({ token }) => {
   const handleRecipeAdded = (newRecipe) => {
     setRecipes([...recipes, newRecipe]);
   };
-
-  console.log("recipes:", recipes); // Add this line
 
   return (
     <div className="cookbook">

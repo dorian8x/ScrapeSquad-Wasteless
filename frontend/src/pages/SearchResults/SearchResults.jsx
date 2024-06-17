@@ -2,7 +2,6 @@ import React from 'react';
 import RecipeTile from "../../components/RecipeTile";
 
 export function SearchResults({ recipes }) { // Destructure the recipes prop
-  console.log('SearchResults recipes:', recipes); // Log the recipes
 
   if (!recipes || recipes.length === 0) {
     return <div>No recipes found.</div>;

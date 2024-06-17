@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const RecipeTile = ({ recipe }) => {
-  console.log('Rendering recipe:', recipe);
 
   if (!recipe) {
     return null; // Or render a placeholder

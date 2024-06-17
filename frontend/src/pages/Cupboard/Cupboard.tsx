@@ -17,7 +17,6 @@ export function Cupboard() {
     function handleOnDrop(e: React.DragEvent) {
         e.preventDefault();
         const ingredientType = e.dataTransfer.getData("ingredientType") as string;
-        console.log("ingredientType", ingredientType);
         setIngredients([...ingredients, ingredientType]);
     }
 
@@ -41,13 +40,11 @@ export function Cupboard() {
         try {
             await findMeals(ingredients)
             .then((recipes) => {
-                console.log("Fetched recipes:", recipes); // Log the fetched recipes
                 const processedRecipes = recipes.map(r => ({
                     title: r.strMeal,
                     picture: r.strMealThumb,
                     _id: r.idMeal
                 }));
-                console.log("Processed recipes:", processedRecipes); // Log the processed recipes
                 setFoundRecipes(processedRecipes);
             });
         } catch (err) {
