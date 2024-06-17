@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { findMealByID } from "../../services/meals";
 import { bookmarkRecipe } from "../../services/recipes";
 import './Recipe.css';
@@ -7,7 +7,9 @@ import './Recipe.css';
 export const Recipe = () => {
   const [meal, setMeal] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
   const meal_id = useParams().id;
+  const isSaved = location.state?.isSaved || false;
 
   useEffect(() => {
     findMealByID(meal_id)
@@ -59,7 +61,7 @@ export const Recipe = () => {
           <h2>Instructions:</h2>
           {meal.strInstructions}
         </div>
-        <button onClick={handleBookmark}>Bookmark</button>
+        {!isSaved && <button onClick={handleBookmark}>Bookmark</button>}
       </div>
     </div>
   );

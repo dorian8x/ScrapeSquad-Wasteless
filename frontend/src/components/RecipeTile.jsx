@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import './RecipeTile.css';
 
-const RecipeTile = (props) => {
+const RecipeTile = ({ recipe, onClick }) => {
+  const { picture, title, strMealThumb, strMeal } = recipe || {};
+
+  const imageUrl = picture || strMealThumb;
+  const recipeTitle = title || strMeal;
+
   return (
-    <div className="recipe-card">
-      <img src={props.picture} alt={props.title} className="recipe-image" />
-      <Link to={`/recipe/${props.recipeId}`}>{props.title}</Link>
-      <p>ID: {props.recipeId}</p> {/* hide this later */}
+    <div className="recipe-tile" onClick={onClick}>
+      {imageUrl ? <img src={imageUrl} alt={recipeTitle} /> : <div className="placeholder-img">No Image</div>}
+      <h3>{recipeTitle || 'Untitled Recipe'}</h3>
     </div>
   );
 };
