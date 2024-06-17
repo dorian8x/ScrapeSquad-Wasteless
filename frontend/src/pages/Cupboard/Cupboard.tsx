@@ -2,7 +2,7 @@ import './Cupboard.css';
 import React, { useState } from "react";
 import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
 import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
-import { findMeals } from '../../services/meals';
+import { findMealsByIngredients } from '../../services/meals';
 // import Recipe from '../../components/Recipe';
 import { SearchResults } from '../SearchResults/SearchResults';
 // import { useNavigate } from "react-router-dom";
@@ -61,7 +61,7 @@ export function Cupboard() {
         //     }
         // } 
         try {
-            await findMeals(ingredients)
+            await findMealsByIngredients(ingredients)
             .then((recipes) => {
                 console.log("recipes is (and foundRecipes is going to be):", recipes)
                 setFoundRecipes(recipes);

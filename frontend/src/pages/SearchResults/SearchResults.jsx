@@ -1,4 +1,4 @@
-import RecipeTile from "../../components/RecipeTile";
+import RecipeTile from "../../components/RecipeTile/RecipeTile";
 // import { useNavigate, useLocation } from "react-router-dom";
 // import { useEffect, useState  } from "react";
 // import { findRecipes } from "../../services/recipes";
