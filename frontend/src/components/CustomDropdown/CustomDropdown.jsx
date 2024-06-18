@@ -4,35 +4,37 @@ import './CustomDropdown.css';
 const widgetOptions = ["beef", "garlic"];
 
 function CustomDropdown({ onDragStart }) {
-    const [showWidgets, setShowWidgets] = useState(false);
-
-    const toggleIngredients = () => {
-        setShowWidgets(!showWidgets);
-    };
+    const [showMessage, setShowMessage] = useState(false);
 
     return (
         <div className="custom-dropdown">
-            <div id="comment-button" className="commentContainer">
-                {!showWidgets &&
-                    <button className="dropdown-button" onClick={toggleIngredients}>Show Ingredients</button>}
-                {showWidgets &&
-                    <button className="dropdown-button" onClick={toggleIngredients}>Hide Ingredients</button>}
-                {showWidgets &&
-                    <div className="dropdown-content">
-                        {widgetOptions.map((widgetType) => (
-                            <div
-                                key={widgetType}
-                                className="dropdown-item"
-                                draggable
-                                onDragStart={(e) => onDragStart(e, widgetType)}
-                            >
-                                {widgetType}
-                            </div>
-                        ))}
-                    </div>
-                }
+            <div 
+                id="comment-button" 
+                className="commentContainer"
+                onMouseEnter={() => setShowMessage(true)}
+                onMouseLeave={() => setShowMessage(false)}
+            >
+                <button className="dropdown-button">Show Ingredients</button>
+                <div className="dropdown-content">
+                    {widgetOptions.map((widgetType) => (
+                        <div
+                            key={widgetType}
+                            className="dropdown-item"
+                            draggable
+                            onDragStart={(e) => onDragStart(e, widgetType)}
+                        >
+                            {widgetType}
+                        </div>
+                    ))}
+                </div>
             </div>
+            {showMessage && 
+                <div className="drag-message">
+                     Drag to Start cooking!
+                </div>
+            }
         </div>
+        
     );
 }
 
