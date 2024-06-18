@@ -16,9 +16,11 @@ const BookmarkRecipe = ({ meal }) => {
       const recipe = {
         title: meal.strMeal,
         picture: meal.strMealThumb,
-        ingredients: meal.ingredientArray,
+        ingredients: meal.formattedIngredients,
         instructions: meal.strInstructions,
       };
+
+      console.log("Sending bookmark request with:", recipe); // Log recipe for debugging
 
       await bookmarkRecipe(token, recipe);
       alert("Recipe bookmarked successfully!");

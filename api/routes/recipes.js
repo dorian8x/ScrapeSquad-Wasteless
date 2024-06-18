@@ -1,10 +1,11 @@
 const express = require("express");
 const RecipesController = require("../controllers/recipes");
+const tokenChecker = require("../middleware/tokenChecker");
 
 const router = express.Router();
 
-router.get("/", RecipesController.getAllSavedRecipesByUser_id);
-router.post("/", RecipesController.createRecipe);
-router.post("/bookmark", RecipesController.bookmarkRecipe);
+router.get("/", tokenChecker, RecipesController.getAllSavedRecipesByUser_id);
+router.post("/", tokenChecker, RecipesController.createRecipe);
+router.post("/bookmark", tokenChecker, RecipesController.bookmarkRecipe);
 
 module.exports = router;

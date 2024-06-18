@@ -24,7 +24,7 @@ export const bookmarkRecipe = async (token, recipe) => {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`, // Ensure token is sent in headers
     },
     body: JSON.stringify(recipe),
   };
