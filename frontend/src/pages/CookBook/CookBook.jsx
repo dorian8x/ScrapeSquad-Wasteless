@@ -1,3 +1,5 @@
+// frontend/src/pages/CookBook/CookBook.jsx
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipes } from "../../services/recipes";

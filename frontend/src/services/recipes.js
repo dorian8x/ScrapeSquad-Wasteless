@@ -1,9 +1,12 @@
+// frontend/src/services/recipes.js
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getRecipes = async (token) => {
   const requestOptions = {
     method: "GET",
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   };
@@ -11,27 +14,7 @@ export const getRecipes = async (token) => {
   const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
 
   if (response.status !== 200) {
-    throw new Error("Unable to fetch posts");
-  }
-
-  const data = await response.json();
-  return data;
-};
-
-export const saveRecipe = async (token, recipe) => {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(recipe),
-  };
-
-  const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
-
-  if (response.status !== 201) {
-    throw new Error("Unable to save recipe");
+    throw new Error("Failed to fetch recipes");
   }
 
   const data = await response.json();
