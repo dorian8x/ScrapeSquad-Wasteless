@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getRecipes } from '../services/recipes';
-import RecipeTile from './RecipeTile';
+import RecipeTile from './RecipeTile/RecipeTile';
 import RecipeForm from './RecipeForm';
 
 export const CookbookOrSearchResults = () => {

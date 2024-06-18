@@ -30,8 +30,8 @@ export const Recipe = () => {
         <div className="ingredients">
           <h2>Ingredients:</h2>
           <ul>
-            {meal.ingredientArray
-            ? meal.ingredientArray.map(
+            {meal.formattedIngredients
+            ? meal.formattedIngredients.map(
                 (ing, index) => <li key={index}>{ing}</li>)
               : ""}
           </ul>

@@ -1,7 +1,7 @@
 // docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const findMeals = async (ingredientArray) => {    
+export const findMealsByIngredients = async (ingredientArray) => {    
     const payload = {};
     ingredientArray.forEach((value, index) => {
         payload[index] = value;
@@ -14,7 +14,7 @@ export const findMeals = async (ingredientArray) => {
         body: JSON.stringify(payload),
     };
 
-    const response = await fetch(`${BACKEND_URL}/meals/external`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/meals/ingredients`, requestOptions);
 
     // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
     if (response.status === 200) {
