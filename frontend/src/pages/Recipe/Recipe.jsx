@@ -6,12 +6,18 @@ import './Recipe.css';
 
 export const Recipe = () => {
   const [meal, setMeal] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const meal_id = useParams().id;
   const isSaved = location.state?.isSaved || false;
 
   useEffect(() => {
+    const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
+    if (token) {
+      setIsLoggedIn(true);
+    }
+    
     findMealByID(meal_id)
       .then((data) => {
         setMeal(data);
@@ -20,10 +26,16 @@ export const Recipe = () => {
         console.error(err);
         navigate("/cupboard");
       });
-  }, [navigate]);
+  }, [navigate, meal_id]);
 
   const handleBookmark = async () => {
     try {
+      const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
       const recipe = {
         title: meal.strMeal,
         picture: meal.strMealThumb,
@@ -31,7 +43,6 @@ export const Recipe = () => {
         instructions: meal.strInstructions
       };
 
-      const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
       await bookmarkRecipe(token, recipe);
       alert("Recipe bookmarked successfully!");
     } catch (error) {
@@ -52,8 +63,7 @@ export const Recipe = () => {
           <h2>Ingredients:</h2>
           <ul>
             {meal.ingredientArray
-              ? meal.ingredientArray.map(
-                (ing, index) => <li key={index}>{ing}</li>)
+              ? meal.ingredientArray.map((ing, index) => <li key={index}>{ing}</li>)
               : ""}
           </ul>
         </div>
@@ -61,7 +71,7 @@ export const Recipe = () => {
           <h2>Instructions:</h2>
           {meal.strInstructions}
         </div>
-        {!isSaved && <button onClick={handleBookmark}>Bookmark</button>}
+        {isLoggedIn && !isSaved && <button onClick={handleBookmark}>Bookmark</button>}
       </div>
     </div>
   );
