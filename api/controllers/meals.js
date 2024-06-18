@@ -23,7 +23,6 @@ const findMealsByIngredients = async (req, res) => {
         const foundRecipes = await Promise.all( // Get meals for each ingredient concurrently
             wantedIngredients.map(ingredient => getMealsByIngredient(ingredient))
         );
-        console.log("foundRecipes is:", foundRecipes)
         const finalResult = foundRecipes.reduce((commonRecipes, recipes) => {// Reduce to find common recipes
             return commonRecipes.filter(recipe => // Filter common recipes
                 recipes.some(reci => recipe.idMeal === reci.idMeal) // checks if _recipe_ is included in the _recipes_ currently being checked/reduced 

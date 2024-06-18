@@ -10,8 +10,6 @@ import { SearchResults } from '../SearchResults/SearchResults';
 export function Cupboard() {
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [foundRecipes, setFoundRecipes] = useState<Object[]>([]);
-    // const navigate = useNavigate();
-    // const token = localStorage.getItem("token");
     const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
 
     function handleOnDrag(e: React.DragEvent, ingredientType: string) {
@@ -27,8 +25,6 @@ export function Cupboard() {
         //retrieve the ingredientType from the dataTransfer object
         //this is the same data that was set in handleOnDrag
         const ingredientType = e.dataTransfer.getData("ingredientType") as string;
-        //log ingredientType for debugging
-        console.log("ingredientType", ingredientType);
         //Update the state to include new widget
         //the setIngredients function is used to update the state
         //Here, we spread the existing ingredients and add the new widget type to the end
@@ -53,17 +49,10 @@ export function Cupboard() {
     const numberOfShelves = Math.ceil(ingredients.length / itemsPerShelf);
 
     const handleSubmitIngredients = async (event) => {
-        // console.log(event);
         event.preventDefault();
-        // navigate("/searchresults"), {
-        //     state : {
-        //         ingredient: ingredients
-        //     }
-        // } 
         try {
             await findMealsByIngredients(ingredients)
             .then((recipes) => {
-                console.log("recipes is (and foundRecipes is going to be):", recipes)
                 setFoundRecipes(recipes);
             });
         } catch (err) {
@@ -103,7 +92,7 @@ export function Cupboard() {
                     <input role="submit-button" id="submit" type="submit" value="Submit" />
                 </form>
             </div>
-            <SearchResults props={foundRecipes} />
+            <SearchResults props={foundRecipes} /> 
         </>
     );
 }
