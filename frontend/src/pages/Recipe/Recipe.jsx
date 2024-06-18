@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { findMealByID } from "../../services/meals";
-import SaveRecipeButton from '../../components/SaveRecipeButton/SaveRecipeButton';
+import SaveRecipeButton from '../../components/SaveRecipe';
 import './Recipe.css';
 
 export const Recipe = () => {

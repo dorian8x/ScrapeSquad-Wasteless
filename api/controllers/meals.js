@@ -1,4 +1,4 @@
-const Recipe = require("../models/recipe");
+
 
 const getMealsByIngredient = async (ingredient) => {
     const gottenMeals = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)

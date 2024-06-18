@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const usersRouter = require("./routes/users");
 const mealsRouter = require("./routes/meals");
-const recipesRouter = require("./routes/recipes");
+const recipesRouter = require("./routes/savedRecipes");
 const authenticationRouter = require("./routes/authentication");
 // const tokenChecker = require("./middleware/tokenChecker");  // not needed until recipes are implemented
 
