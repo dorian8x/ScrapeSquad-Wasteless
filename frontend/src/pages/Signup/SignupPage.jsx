@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../../services/authentication";
+import "./SignUp.css"
 
 export const SignupPage = () => {
   const [username, setUsername] = useState("");
@@ -21,7 +22,7 @@ export const SignupPage = () => {
   };
 
   return (
-    <>
+    <div className="form-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div id="username">
@@ -56,10 +57,12 @@ export const SignupPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="passwordValidator">Password must be 8+ characters<br/>
-          Password must contain at least one uppercase letter<br/>
-          Password must contain at least one lowercase letter<br/>
-          Password must contain at least one number</p>
+          <p className="passwordValidator">Passwords <strong>must</strong> meet the following requirements:</p>
+          <ul>
+            <li>8+ characters</li>
+            <li>Password must contain at least one uppercase letter</li>
+            <li>Password must contain at least one number</li>
+          </ul>
         </div>
         <div>
           <input
@@ -71,6 +74,6 @@ export const SignupPage = () => {
           />
         </div>
       </form>
-    </>
+    </div>
   );
 };

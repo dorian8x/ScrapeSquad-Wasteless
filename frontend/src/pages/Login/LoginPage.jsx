@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/authentication";
+import "./LoginPage.css";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -24,40 +25,42 @@ export const LoginPage = () => {
 
 return (
   <>
-    <h2>Log in to your account</h2>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          required
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          required
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          role="submit-button"
-          id="submit"
-          type="submit"
-          value="Submit" 
-          className="button"
-        />
-      </div>
-    </form>
+<div className="form-container">
+      <h2>Log in to your account</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="text"
+            required
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            id="password"
+            type="password"
+            required
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <input
+            role="submit-button"
+            id="submit"
+            type="submit"
+            value="Submit"
+            className="button"
+          />
+        </div>
+      </form>
+    </div>
   </>
 );
 };
