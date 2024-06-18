@@ -1,50 +1,40 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const findMealsByIngredients = async (ingredientArray) => {    
-    const payload = {};
-    ingredientArray.forEach((value, index) => {
-        payload[index] = value;
-    });
-    const requestOptions = {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-    };
+export const findMealsByIngredients = async (ingredientArray) => {
+  const payload = {};
+  ingredientArray.forEach((value, index) => {
+    payload[index] = value;
+  });
 
-    const response = await fetch(`${BACKEND_URL}/meals/ingredients`, requestOptions);
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  };
 
-    // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
-    if (response.status === 200) {
-        let data = await response.json();
-        return data.recipes;
-    } else {
-        throw new Error(
-        `Received status ${response.status} when logging in. Expected 201`
-        );
-    }
+  const response = await fetch(`${BACKEND_URL}/meals/ingredients`, requestOptions);
+
+  if (response.status === 200) {
+    const data = await response.json();
+    return data.recipes;
+  } else {
+    throw new Error("Failed to fetch recipes");
+  }
 };
 
-export const findMealByID = async (mealID) => {    
-    const payload = {
-        mealID: mealID
-    };
-    const requestOptions = {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-    };
-    const response = await fetch(`${BACKEND_URL}/meals`, requestOptions);
+export const findMealByID = async (mealID) => {
+  try {
+    const response = await fetch(`${BACKEND_URL}/meals/${mealID}`);
     if (response.status === 200) {
-        let data = await response.json();
-        return data.foundMeal;
+      const data = await response.json();
+      return data.foundMeal; // Adjust according to your backend response
     } else {
-        throw new Error(
-        `Received status ${response.status} when logging in. Expected 200`
-        );
+      throw new Error("Failed to fetch meal by ID");
     }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };

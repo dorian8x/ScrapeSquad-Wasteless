@@ -1,63 +1,63 @@
 .custom-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-button {
-    background-color: #1a7c1e;
-    color: white;
-    padding: 10px 20px;
-    font-size: 20px;
-    border: 3px solid #030303;
-    cursor: pointer;
+  background-color: #1a7c1e;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  border: 3px solid #030303;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .dropdown-button:hover {
-    background-color: #3e8e41;
+  background-color: #3e8e41;
 }
 
 .commentContainer {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-content {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    top: 100%;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  top: 100%;
 }
 
 .commentContainer:hover .dropdown-content {
-    display: flex;
+  display: flex;
 }
 
 .dropdown-item {
-    padding: 8px 12px;
-    cursor: pointer;
-
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background-color: #03e29b;
+  background-color: #03e29b;
 }
 
 .drag-message {
-    position: fixed;
-    top: 20px;
-    margin-left: 45vh;
-    left: 0;
-    background-color: rgb(220, 245, 220);
-    padding: 10px;
-    border: 3px solid #090909;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    white-space: nowrap;
-    font-size: 20px;
-    font-weight: bold;
+  position: fixed;
+  top: 20px;
+  margin-left: 45vh;
+  left: 0;
+  background-color: rgb(220, 245, 220);
+  padding: 10px;
+  border: 3px solid #090909;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  white-space: nowrap;
+  font-size: 20px;
+  font-weight: bold;
 }

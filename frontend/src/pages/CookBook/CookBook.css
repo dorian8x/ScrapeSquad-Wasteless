@@ -1,0 +1,26 @@
+.cookbook {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Space between tiles */
+    padding: 20px;
+  }
+  
+  .recipe-tile {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px; /* Adjust tile size as needed */
+    cursor: pointer;
+  }
+  
+  .placeholder-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    color: #999;
+    height: 150px; /* Adjust height as needed */
+  }
+  
