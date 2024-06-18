@@ -1,13 +1,8 @@
-import React from "react";
-import logo from "../assets/WL.png";
 import "./Footer.css";
 
 export const Footer = () => {
     return (
         <div className="footer-container">
-            <div className="logo-container">
-                <img src={logo} alt="logo" className="logo" />
-            </div>
             <div className="button-container">
                 <button className="footer-button">Conditions of Use & Sale</button>
                 <button className="footer-button">Privacy Notice</button>

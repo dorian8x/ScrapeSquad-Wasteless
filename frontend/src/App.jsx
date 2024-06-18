@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import "./BaseStyling.css";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { Cupboard } from "./pages/Cupboard/Cupboard";
-// import { SearchResults } from "./pages/SearchResults/SearchResults";
 import  { Recipe }  from "./pages/Recipe/Recipe";
 import { Cookbook } from "./pages/CookBook/CookBook";
+import { LandingPage } from "./pages/Landing/LandingPage";
+
 
 
 // docs: https://reactrouter.com/en/main/start/overview
@@ -28,10 +28,6 @@ const router = createBrowserRouter([
     path: "/cupboard",
     element: <Cupboard />,
   },
-  // {
-  //   path: "/searchresults",
-  //   element: <SearchResults />,
-  // },
   {
     path: "/recipe/:id",
     element: <Recipe />,
