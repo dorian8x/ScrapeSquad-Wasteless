@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
+import "../../BaseStyling.css";
 import foodImage1 from "../../assets/image1.jpg";
-import Footer from "../../components/Footer/Footer";
+// import { Footer } from "../../components/Footer";
+
 
 export const LandingPage = () => {
   return (
@@ -17,10 +19,8 @@ export const LandingPage = () => {
         <Link to="/signup">Create an account to save your favourite recipes and preferences</Link>
       </p>
       <img src={foodImage1} alt="Fridge" className="fridge-image" />
-
-      <Footer/>
+      {/* <Footer /> */}
     </div>
-
     
   );
 };
