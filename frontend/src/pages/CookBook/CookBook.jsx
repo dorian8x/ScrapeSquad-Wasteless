@@ -12,15 +12,20 @@ const CookBook = () => {
     const fetchRecipes = async () => {
       try {
         const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
+        if (!token) {
+          navigate("/login");
+          return;
+        }
         const fetchedRecipes = await getRecipes(token);
         setRecipes(fetchedRecipes.savedRecipes);
       } catch (error) {
         console.error("Error fetching recipes:", error);
+        navigate("/login");
       }
     };
 
     fetchRecipes();
-  }, []);
+  }, [navigate]);
 
   const handleRecipeClick = (recipeId) => {
     navigate(`/recipe/${recipeId}`, { state: { isSaved: true } });
