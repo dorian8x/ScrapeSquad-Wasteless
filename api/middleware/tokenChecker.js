@@ -15,7 +15,8 @@ const tokenChecker = (req, res, next) => {
       res.status(401).json({ message: "auth error" });
     } else {
       // Add the user_id from the payload to the req object.
-      req.user_id = payload.user_id;
+      req.user_id = payload.user_id.toString(); // Ensure user_id is a string
+      console.log("Token payload:", payload); // Log the token payload
       next();
     }
   });
