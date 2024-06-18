@@ -4,8 +4,8 @@ import './RecipeTile.css';
 const RecipeTile = (props) => {
   return (
     <div className="recipe-card">
-      <img src={props.picture} alt={props.title} className="recipe-image" />
-      <Link to={`/recipe/${props.recipeId}`}>{props.title}</Link> ID: {props.recipeId} {/* hide the ID later */}
+      
+      <Link to={`/recipe/${props.recipeId}`}><img src={props.picture} alt={props.title} className="recipe-image" />{props.title}</Link> ID: {props.recipeId} {/* hide the ID later */}
     </div>
   );
 };
