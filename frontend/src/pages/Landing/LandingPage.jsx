@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import foodImage1 from "../../assets/image1.jpg";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
+
 
 
 export const LandingPage = () => {
   return (
     <div>
-      <Header />
         <div className="landing">
         <h1>Welcome to Sustainabite!</h1>
         <p>
@@ -22,7 +20,7 @@ export const LandingPage = () => {
         </p>
         <img src={foodImage1} alt="Fridge" className="fridge-image" />
       </div>
-      <Footer />
+    
     </div>
     
   );
