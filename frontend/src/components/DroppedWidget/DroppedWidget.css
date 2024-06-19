@@ -4,18 +4,17 @@
     justify-content: space-between;
     padding: 10px;
     margin: 5px 0;
-    background-color: #e0f7fa;
-    border: 1px solid #00acc1;
+    background-color: #8adeaa;
+    border: 1px solid #005a27;
     border-radius: 8px;
     transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
 }
 .dropped-widget:hover {
-    background-color: #b2ebf2;
-    border-color: #007c91;
+    border-color: #005a27;
     transform: scale(1.05);
 }
 .dropped-widget button {
-    background-color: #e57373;
+    background-color: #093c00;
     border: none;
     color: white;
     cursor: pointer;

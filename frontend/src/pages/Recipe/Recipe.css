@@ -37,6 +37,11 @@
     width: 30%;
     margin-right: 20px;
     font-size: 1.2em;
+    color: white;
+    background-color: #004d26;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 0.5rem;
 }
 
 .ingredients h2 {
@@ -51,6 +56,12 @@
 .instructions {
     width: 70%;
     white-space: pre-wrap;
+    color: white;
+    background-color: #004d26;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    
 }
 
 .instructions h2 {
