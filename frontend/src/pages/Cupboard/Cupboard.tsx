@@ -72,9 +72,11 @@ export function Cupboard() {
             </div>
           ))}
         </div>
-        <form onSubmit={handleSubmitIngredients}>
-          <input role="submit-button" id="submit" type="submit" value="Submit" />
-        </form>
+        <div className="home">
+          <form onSubmit={handleSubmitIngredients}>
+            <input className="search-submit" role="submit-button" id="submit" type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
       <SearchResults props={foundRecipes} />
     </>
