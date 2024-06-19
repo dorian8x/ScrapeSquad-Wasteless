@@ -5,7 +5,6 @@ export const findMealsByIngredients = async (ingredientArray) => {
   ingredientArray.forEach((value, index) => {
     payload[index] = value;
   });
-
   const requestOptions = {
     method: "POST",
     headers: {
@@ -13,9 +12,7 @@ export const findMealsByIngredients = async (ingredientArray) => {
     },
     body: JSON.stringify(payload),
   };
-
   const response = await fetch(`${BACKEND_URL}/meals/ingredients`, requestOptions);
-
   if (response.status === 200) {
     const data = await response.json();
     return data.recipes;
@@ -25,16 +22,17 @@ export const findMealsByIngredients = async (ingredientArray) => {
 };
 
 export const findMealByID = async (mealID) => {
-  try {
-    const response = await fetch(`${BACKEND_URL}/meals/${mealID}`);
-    if (response.status === 200) {
-      const data = await response.json();
-      return data.foundMeal;
-    } else {
-      throw new Error("Failed to fetch meal by ID");
-    }
-  } catch (error) {
-    console.error(error);
-    throw error;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const response = await fetch(`${BACKEND_URL}/meals/${mealID}`, requestOptions);
+  if (response.status === 200) {
+    const data = await response.json();
+    return data.foundMeal;
+  } else {
+    throw new Error("Failed to fetch meal by ID");
   }
 };

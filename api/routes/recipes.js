@@ -4,9 +4,7 @@ const tokenChecker = require("../middleware/tokenChecker");
 
 const router = express.Router();
 
-router.get("/", tokenChecker, RecipesController.getAllSavedRecipesByUser_id);
-router.post("/", tokenChecker, RecipesController.createRecipe);
-router.post("/bookmark", tokenChecker, RecipesController.bookmarkRecipe);
-router.get("/saved", tokenChecker, RecipesController.getSavedRecipes);
+router.get("/", tokenChecker, RecipesController.getSavedRecipes);
+router.post("/", tokenChecker, RecipesController.bookmarkRecipe);
 
 module.exports = router;

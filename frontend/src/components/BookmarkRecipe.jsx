@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { bookmarkRecipe } from '../services/recipes';
 
@@ -10,9 +9,7 @@ const BookmarkRecipe = ({ meal }) => {
       const token = localStorage.getItem("token");
       if (!token) {
         navigate("/login");
-        return;
       }
-
       const recipe = {
         title: meal.strMeal,
         picture: meal.strMealThumb,
@@ -20,7 +17,6 @@ const BookmarkRecipe = ({ meal }) => {
         instructions: meal.strInstructions,
         recipePageId: meal.idMeal // Ensure this field is included
       };
-
       await bookmarkRecipe(token, recipe);
       alert("Recipe bookmarked successfully!");
     } catch (error) {

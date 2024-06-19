@@ -1,4 +1,3 @@
-const Recipe = require("../models/recipe");
 
 const getMealsByIngredient = async (ingredient) => {
   try {
@@ -40,7 +39,7 @@ const findMealsByIngredients = async (req, res) => {
 };
 
 const findMealByID = async (req, res) => {
-  const mealID = req.params.id || req.body.mealID;
+  const mealID = req.params.id;
   try {
     const foundMeal = await getMealByID(mealID);
     const ingredientArray = Object.values(foundMeal).slice(9, 29);

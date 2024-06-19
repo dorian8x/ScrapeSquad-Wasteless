@@ -15,11 +15,8 @@ const CookBook = () => {
         if (!token) {
           console.log("No token found, redirecting to login");
           navigate("/login");
-          return;
         }
-        console.log("Fetching recipes with token:", token);
         const fetchedRecipes = await fetchSavedRecipes(token);
-        console.log("Fetched recipes:", fetchedRecipes);
         setRecipes(fetchedRecipes);
       } catch (error) {
         console.error("Error fetching recipes:", error);
@@ -36,13 +33,12 @@ const CookBook = () => {
 
   return (
     <div className="cookbook">
-      {recipes.length > 0 ? (
+      {recipes.length > 0 ? 
         recipes.map((recipe) => (
           <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe.recipePageId)} />
         ))
-      ) : (
-        <p>No saved recipes found.</p>
-      )}
+      : <p>No saved recipes found.</p>
+      }
     </div>
   );
 };

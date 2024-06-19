@@ -1,26 +1,7 @@
 const Recipe = require("../models/recipe");
 
-const createRecipe = async (req, res) => {
-  const { title, picture, ingredients, instructions } = req.body;
-  const newToken = req.newToken;
 
-  try {
-    const newRecipe = new Recipe({
-      title,
-      picture,
-      ingredients,
-      instructions,
-      user_id: req.user_id,
-    });
-
-    await newRecipe.save();
-    res.status(201).json({ message: "Recipe created", token: newToken });
-  } catch (error) {
-    res.status(500).json({ message: "Failed to create recipe", error });
-  }
-};
-
-const getAllSavedRecipesByUser_id = async (req, res) => {
+const getSavedRecipes = async (req, res) => {
   try {
     const savedRecipes = await Recipe.find({ user_id: req.user_id });
     res.status(200).json({ savedRecipes });
@@ -60,22 +41,8 @@ const bookmarkRecipe = async (req, res) => {
   }
 };
 
-const getSavedRecipes = async (req, res) => {
-  try {
-    const userId = req.user_id.toString();
-    console.log("Fetching recipes for user:", userId);
-    const recipes = await Recipe.find({ user_id: userId });
-    console.log("Fetched recipes:", recipes);
-    res.status(200).json(recipes);
-  } catch (err) {
-    console.error("Error fetching saved recipes:", err);
-    res.status(500).json({ error: err.message });
-  }
-};
 
 const RecipesController = {
-  createRecipe,
-  getAllSavedRecipesByUser_id,
   bookmarkRecipe,
   getSavedRecipes
 };

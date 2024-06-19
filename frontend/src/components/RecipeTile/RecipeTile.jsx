@@ -1,4 +1,3 @@
-import React from 'react';
 import './RecipeTile.css';
 
 const RecipeTile = ({ recipe, onClick }) => {

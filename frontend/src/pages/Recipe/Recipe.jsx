@@ -31,7 +31,7 @@ export const Recipe = () => {
   return (
     <div className="recipe">
       <h1>{meal.strMeal}</h1>
-      {meal.strMealThumb && <img src={meal.strMealThumb} alt={meal.strMeal} />}
+      <img src={meal.strMealThumb} alt={meal.strMeal} />
       <div className="ingredients">
         <h2>Ingredients:</h2>
         <ul>
