@@ -2,12 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh;
-    margin: 0;
-    font-family: 'Exo 2', sans-serif; */
     height: 65vh;
     width: 100%;
 }
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -16,12 +14,12 @@
     max-width: 600px;
 }
 
-.login-title {
+.page-title {
     color: #ffffff;
     margin-bottom: 1rem;
 }
 
-.login-form {
+.sign-up-form {
     background-color: #003919; 
     padding: 2rem;
     border-radius: 10px;
@@ -32,17 +30,17 @@
     flex-direction: column;
 }
 
-.login-form-div {
+.form-div {
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
 }
 
-.login-label {
+.form-label {
     margin-bottom: 0.5rem;
 }
 
-.login-input {
+.form-input {
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
@@ -52,20 +50,19 @@
     font-size: 1rem;
 }
 
-.login-submit-btn {
-    background-color: #005a27;
+.submit-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #004d26; 
+    color: #a5d6a7;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #004d26; 
-    color: #a5d6a7;
-    font-size: 1rem;
 }
 
-.login-submit-btn:hover {
+.submit-btn :hover {
     background-color: #02b650;
 }
 
@@ -73,4 +70,16 @@
     font-size: 0.9rem;
     color: #a5d6a7;
     margin-top: 0.5rem;
+}
+
+.password-paramters-list {
+    padding-left: 1.5rem;
+    margin: 0;
+    list-style-position: inside;
+    text-align: left;
+}
+
+.pp-item {
+    color: #a5d6a7; 
+    margin-bottom: 0.5rem; 
 }
