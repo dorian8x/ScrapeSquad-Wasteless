@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getRecipes } from "../../services/recipes";
-import RecipeTile from "../../components//RecipeTile/RecipeTile";
+import { fetchSavedRecipes } from "../../services/recipes";
+import RecipeTile from "../../components/RecipeTile/RecipeTile";
 import './CookBook.css';
 
 const CookBook = () => {
@@ -11,13 +11,16 @@ const CookBook = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
         if (!token) {
+          console.log("No token found, redirecting to login");
           navigate("/login");
           return;
         }
-        const fetchedRecipes = await getRecipes(token);
-        setRecipes(fetchedRecipes.savedRecipes);
+        console.log("Fetching recipes with token:", token);
+        const fetchedRecipes = await fetchSavedRecipes(token);
+        console.log("Fetched recipes:", fetchedRecipes);
+        setRecipes(fetchedRecipes);
       } catch (error) {
         console.error("Error fetching recipes:", error);
         navigate("/login");
@@ -33,9 +36,13 @@ const CookBook = () => {
 
   return (
     <div className="cookbook">
-      {recipes.map((recipe) => (
-        <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe._id)} />
-      ))}
+      {recipes.length > 0 ? (
+        recipes.map((recipe) => (
+          <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe._id)} />
+        ))
+      ) : (
+        <p>No saved recipes found.</p>
+      )}
     </div>
   );
 };

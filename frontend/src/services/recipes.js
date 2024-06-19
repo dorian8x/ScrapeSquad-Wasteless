@@ -24,7 +24,7 @@ export const bookmarkRecipe = async (token, recipe) => {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`, // Ensure token is sent in headers
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(recipe),
   };
@@ -37,4 +37,30 @@ export const bookmarkRecipe = async (token, recipe) => {
 
   const data = await response.json();
   return data;
+};
+
+// New function to fetch saved recipes
+export const fetchSavedRecipes = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await fetch(`${BACKEND_URL}/recipes/saved`, requestOptions);
+
+    if (response.status !== 200) {
+      throw new Error("Failed to fetch saved recipes");
+    }
+
+    const data = await response.json();
+    console.log("Fetched saved recipes data:", data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching saved recipes:", error);
+    throw error;
+  }
 };
