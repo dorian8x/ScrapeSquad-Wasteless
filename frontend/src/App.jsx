@@ -7,7 +7,6 @@ import { Cupboard } from "./pages/Cupboard/Cupboard";
 import { Recipe } from "./pages/Recipe/Recipe";
 import CookBook from "./pages/CookBook/CookBook"; // Corrected import
 import { LandingPage } from "./pages/Landing/LandingPage";
-import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 
 // docs: https://reactrouter.com/en/main/start/overview
@@ -41,7 +40,6 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <Header />
       <RouterProvider router={router} />
       <Footer />
     </>

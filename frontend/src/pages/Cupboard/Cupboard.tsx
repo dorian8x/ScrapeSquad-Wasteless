@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
 import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
 import { findMealsByIngredients } from '../../services/meals';
-import { SearchResults } from '../SearchResults/SearchResults';
+import { SearchResults } from '../../components/SearchResults/SearchResults';
+import { Header } from "../../components/Header/Header";
 
 export function Cupboard() {
   const [ingredients, setIngredients] = useState<string[]>([]);
@@ -49,6 +50,7 @@ export function Cupboard() {
 
   return (
     <>
+      <Header />
       <div className="cupboard">
         <CustomDropdown onDragStart={handleOnDrag} />
         <button className="clear-button" onClick={handleClearAll}>Clear All</button>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import RecipeTile from "../../components/RecipeTile/RecipeTile";
+import RecipeTile from "../RecipeTile/RecipeTile";
 import "./SearchResult.css";
 
 export function SearchResults(props) {

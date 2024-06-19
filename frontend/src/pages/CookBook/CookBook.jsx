@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchSavedRecipes } from "../../services/recipes";
+import { Header } from "../../components/Header/Header";
 import RecipeTile from "../../components/RecipeTile/RecipeTile";
-import './CookBook.css';
+import "./CookBook.css";
 
 const CookBook = () => {
   const [recipes, setRecipes] = useState([]);
@@ -32,14 +33,22 @@ const CookBook = () => {
   };
 
   return (
-    <div className="cookbook">
-      {recipes.length > 0 ? 
-        recipes.map((recipe) => (
-          <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe.recipePageId)} />
-        ))
-      : <p>No saved recipes found.</p>
-      }
-    </div>
+    <>
+      <Header />
+      <div className="cookbook">
+        {recipes.length > 0 ? (
+          recipes.map((recipe) => (
+            <RecipeTile
+              key={recipe._id}
+              recipe={recipe}
+              onClick={() => handleRecipeClick(recipe.recipePageId)}
+            />
+          ))
+        ) : (
+          <p>No saved recipes found.</p>
+        )}
+      </div>
+    </>
   );
 };
 
