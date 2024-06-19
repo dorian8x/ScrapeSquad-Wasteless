@@ -1,7 +1,45 @@
-.footer {
+.footer-container {
+    position: relative;
+    bottom: 0;
+    width: 100vw;
+    z-index: 1000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
     text-align: center;
-    margin-top: 30px;
-    font-size: 1.2em;
-    background-color: rgb(211, 210, 237);
-    
+    background-color: rgb(11, 69, 16) !important; /* Optional: Background color for the footer */
+}
+
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-height: 50px; /* Adjust as needed */
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.button-container {
+    margin-bottom: 20px;
+}
+
+.footer-button {
+    background: none;
+    border: none;
+    color: #d3d3d3; /* Off-white color */
+    font-size: 1em;
+    text-decoration: underline;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.footer-button:hover {
+    color: white; /* Change color on hover for better visibility */
+}
+
+.text-container p {
+    color: #d3d3d3; /* Off-white color */
+    margin: 0;
 }
