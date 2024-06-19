@@ -1,13 +1,10 @@
-body {
-    background-color: #004d26;
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Exo 2', sans-serif;
+    height: 65vh;
+    width: 100%;
 }
-
 .form-container {
     display: flex;
     flex-direction: column;
