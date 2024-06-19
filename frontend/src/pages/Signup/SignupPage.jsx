@@ -22,6 +22,7 @@ export const SignupPage = () => {
   };
 
   return (
+    <div className="container">
     <div className="form-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -74,6 +75,7 @@ export const SignupPage = () => {
           />
         </div>
       </form>
-    </div>
+      </div>
+    </div>  
   );
 };

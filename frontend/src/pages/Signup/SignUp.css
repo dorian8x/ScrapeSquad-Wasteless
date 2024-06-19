@@ -1,83 +1,82 @@
-body {
-    background-color: #004d26;
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Exo 2', sans-serif;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 65vh;
     width: 100%;
-    max-width: 600px;
+    
+      
+    /* Full width */
+}
+.form-container {
+    background-color: transparent;
+    padding: 20px;
+    margin-bottom: 55px;
+    border-radius: 8px;
+     width: 40%;
+    
 }
 
 h2 {
-    color: #ffffff;
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    /* Space below the heading */
 }
 
 form {
-    background-color: #003919; 
-    padding: 2rem;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    color: #a5d6a7;
     display: flex;
     flex-direction: column;
-}
-
-form div {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
+    /* Stack form elements vertically */
 }
 
 label {
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
+    /* Space between label and input */
 }
 
 input[type="text"],
-input[type="password"],
-input[type="submit"] {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #004d26; 
-    color: #a5d6a7;
-    font-size: 1rem;
+input[type="password"] {
+    padding: 10px;
+    /* Inner padding for inputs */
+    margin-bottom: 15px;
+    /* Space below each input */
+    border: 1px solid #ccc;
+    /* Border color */
+    border-radius: 4px;
+    /* Rounded corners for inputs */
 }
 
 input[type="submit"] {
-    background-color: #005a27;
+    background-color: #4CAF50;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    padding: 10px 20px;
+    /* Button padding */
+    border: none;
+    /* Remove border */
+    border-radius: 4px;
+    /* Rounded corners for button */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /* Pointer cursor on hover */
 }
 
 input[type="submit"]:hover {
-    background-color: #02b650;
+    background-color: #45a049;
+    /* Darker green on hover */
 }
 
 .passwordValidator {
-    font-size: 0.9rem;
-    color: #a5d6a7;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
 ul {
-    padding-left: 1.5rem;
-    margin: 0;
-    list-style-position: inside;
-    text-align: left;
+    margin-top: 0;
+    padding-left: 20px;
+    /* Indent the list */
 }
 
-li {
-    color: #a5d6a7; 
-    margin-bottom: 0.5rem; 
+ul li {
+    margin-bottom: 5px;
+    /* Space between list items */
 }
