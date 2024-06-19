@@ -11,7 +11,7 @@ const CookBook = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
+        const token = localStorage.getItem("token");
         if (!token) {
           console.log("No token found, redirecting to login");
           navigate("/login");

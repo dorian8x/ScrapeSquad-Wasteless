@@ -29,7 +29,7 @@ export const findMealByID = async (mealID) => {
     const response = await fetch(`${BACKEND_URL}/meals/${mealID}`);
     if (response.status === 200) {
       const data = await response.json();
-      return data.foundMeal; // Adjust according to your backend response
+      return data.foundMeal;
     } else {
       throw new Error("Failed to fetch meal by ID");
     }

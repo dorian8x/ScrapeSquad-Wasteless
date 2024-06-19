@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { findMealByID } from "../../services/meals"; // Correct import
+import { findMealByID } from "../../services/meals";
 import BookmarkRecipe from "../../components/BookmarkRecipe";
 import './Recipe.css';
 
@@ -8,7 +8,7 @@ export const Recipe = () => {
   const [meal, setMeal] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
-  const { id: meal_id } = useParams(); // Ensure meal_id is correctly extracted
+  const { id: meal_id } = useParams();
   const location = useLocation();
   const isSaved = location.state?.isSaved || false;
 

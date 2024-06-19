@@ -20,8 +20,6 @@ const BookmarkRecipe = ({ meal }) => {
         instructions: meal.strInstructions,
       };
 
-      console.log("Sending bookmark request with:", recipe); // Log recipe for debugging
-
       await bookmarkRecipe(token, recipe);
       alert("Recipe bookmarked successfully!");
     } catch (error) {

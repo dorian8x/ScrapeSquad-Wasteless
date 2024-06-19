@@ -33,12 +33,10 @@ const bookmarkRecipe = async (req, res) => {
   const { title, picture, ingredients, instructions } = req.body;
 
   try {
-    const user_id = req.user_id.toString(); // Ensure user_id is a string
+    const user_id = req.user_id.toString();
     if (!user_id) {
       return res.status(400).json({ message: "User ID is required" });
     }
-
-    console.log("Bookmarking recipe for user_id:", user_id); // Added log
 
     const newRecipe = new Recipe({
       title,
@@ -49,7 +47,6 @@ const bookmarkRecipe = async (req, res) => {
     });
 
     await newRecipe.save();
-    console.log("Recipe bookmarked:", newRecipe); // Log the saved recipe
     res.status(201).json({ message: "Recipe bookmarked successfully!" });
   } catch (error) {
     console.error("Error bookmarking recipe:", error);
@@ -59,10 +56,10 @@ const bookmarkRecipe = async (req, res) => {
 
 const getSavedRecipes = async (req, res) => {
   try {
-    const userId = req.user_id.toString(); // Ensure user_id is a string
-    console.log("Fetching recipes for user:", userId); // Log the user ID
+    const userId = req.user_id.toString();
+    console.log("Fetching recipes for user:", userId);
     const recipes = await Recipe.find({ user_id: userId });
-    console.log("Fetched recipes:", recipes); // Log the fetched recipes
+    console.log("Fetched recipes:", recipes);
     res.status(200).json(recipes);
   } catch (err) {
     console.error("Error fetching saved recipes:", err);
@@ -74,7 +71,7 @@ const RecipesController = {
   createRecipe,
   getAllSavedRecipesByUser_id,
   bookmarkRecipe,
-  getSavedRecipes // Add this line
+  getSavedRecipes
 };
 
 module.exports = RecipesController;
