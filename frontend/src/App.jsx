@@ -4,8 +4,8 @@ import "./App.css";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { Cupboard } from "./pages/Cupboard/Cupboard";
-import  { Recipe }  from "./pages/Recipe/Recipe";
-import { Cookbook } from "./pages/CookBook/CookBook";
+import { Recipe } from "./pages/Recipe/Recipe";
+import CookBook from "./pages/CookBook/CookBook"; // Corrected import
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";

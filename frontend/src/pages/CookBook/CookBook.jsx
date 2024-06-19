@@ -47,4 +47,4 @@ const CookBook = () => {
   );
 };
 
-export default CookBook;
+export default CookBook; // Ensure default export
