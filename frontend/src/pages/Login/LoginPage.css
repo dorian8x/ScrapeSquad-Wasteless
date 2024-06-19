@@ -1,13 +1,13 @@
-body {
-    background-color: #004d26;
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh;
     margin: 0;
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Exo 2', sans-serif; */
+    height: 65vh;
+    width: 100%;
 }
-
 .form-container {
     display: flex;
     flex-direction: column;
@@ -16,12 +16,12 @@ body {
     max-width: 600px;
 }
 
-h2 {
+.login-title {
     color: #ffffff;
     margin-bottom: 1rem;
 }
 
-form {
+.login-form {
     background-color: #003919; 
     padding: 2rem;
     border-radius: 10px;
@@ -32,19 +32,17 @@ form {
     flex-direction: column;
 }
 
-form div {
+.login-form-div {
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
 }
 
-label {
+.login-label {
     margin-bottom: 0.5rem;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="submit"] {
+.login-input {
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
@@ -54,13 +52,20 @@ input[type="submit"] {
     font-size: 1rem;
 }
 
-input[type="submit"] {
+.login-submit-btn {
     background-color: #005a27;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #004d26; 
+    color: #a5d6a7;
+    font-size: 1rem;
 }
 
-input[type="submit"]:hover {
+.login-submit-btn:hover {
     background-color: #02b650;
 }
 
@@ -68,16 +73,4 @@ input[type="submit"]:hover {
     font-size: 0.9rem;
     color: #a5d6a7;
     margin-top: 0.5rem;
-}
-
-ul {
-    padding-left: 1.5rem;
-    margin: 0;
-    list-style-position: inside;
-    text-align: left;
-}
-
-li {
-    color: #a5d6a7; 
-    margin-bottom: 0.5rem; 
 }
