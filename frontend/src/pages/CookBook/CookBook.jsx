@@ -30,15 +30,15 @@ const CookBook = () => {
     fetchRecipes();
   }, [navigate]);
 
-  const handleRecipeClick = (recipeId) => {
-    navigate(`/recipe/${recipeId}`, { state: { isSaved: true } });
+  const handleRecipeClick = (recipePageId) => {
+    navigate(`/recipe/${recipePageId}`, { state: { isSaved: true } });
   };
 
   return (
     <div className="cookbook">
       {recipes.length > 0 ? (
         recipes.map((recipe) => (
-          <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe._id)} />
+          <RecipeTile key={recipe._id} recipe={recipe} onClick={() => handleRecipeClick(recipe.recipePageId)} />
         ))
       ) : (
         <p>No saved recipes found.</p>
@@ -47,4 +47,4 @@ const CookBook = () => {
   );
 };
 
-export default CookBook; // Ensure default export
+export default CookBook;

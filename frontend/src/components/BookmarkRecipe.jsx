@@ -18,6 +18,7 @@ const BookmarkRecipe = ({ meal }) => {
         picture: meal.strMealThumb,
         ingredients: meal.formattedIngredients,
         instructions: meal.strInstructions,
+        recipePageId: meal.idMeal // Ensure this field is included
       };
 
       await bookmarkRecipe(token, recipe);
