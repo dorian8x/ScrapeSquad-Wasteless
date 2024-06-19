@@ -89,7 +89,7 @@ export function Cupboard() {
             <div className="home">
                 <form onSubmit={handleSubmitIngredients}>
                     {/* <input type="range" min="" max="" /> // a slider, for cooking time maybe? */}
-                    <input role="submit-button" id="submit" type="submit" value="Submit" />
+                    <input className="search-submit" role="submit-button" id="submit" type="submit" value="Submit" />
                 </form>
             </div>
             <SearchResults props={foundRecipes} /> 

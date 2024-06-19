@@ -21,7 +21,7 @@
 
 .shelf {
     width: 100%;
-    background-color: #007bff; /* It's supposed to be a woody colour but it looks bad */
+    background-color: #005a27; /* It's supposed to be a woody colour but it looks bad */
     height: auto;
     padding: 10px;
     border-radius: 8px;
@@ -42,8 +42,27 @@
 }
 
 .clear-button {
-    background-color: #e57373;
-    border: none;
+    background-color: #15eea2;
+    border: 2px solid #030303;
     color: white;
     cursor: pointer;
-}    
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}   
+
+.search-submit {
+    background-color: #005a27;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 3px solid #030303;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-submit:hover {
+    background-color: #15e87e;
+}
