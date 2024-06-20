@@ -30,6 +30,7 @@ export const LoginPage = () => {
       <div className="container">
         <div className="form-container">
           <h2 className="login-title">Log in to your account</h2>
+          <h4>Not a member yet? <a href="/signup">Sign up!</a></h4>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-form-div">
               <label className="login-label" htmlFor="email">
