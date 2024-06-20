@@ -44,7 +44,7 @@ export function Cupboard() {
       await findMealsByIngredients(ingredients)
         .then((recipes) => {
           if (recipes.length == 0) {
-            setFoundRecipes(["Couldn't find anything :("])
+            setFoundRecipes(["Couldn't find anything :( Try refining your search"])
           } else {
             setFoundRecipes(recipes);
           }
