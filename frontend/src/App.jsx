@@ -5,7 +5,7 @@ import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { Cupboard } from "./pages/Cupboard/Cupboard";
 import { Recipe } from "./pages/Recipe/Recipe";
-import CookBook from "./pages/CookBook/CookBook"; // Corrected import
+import { CookBook } from "./pages/CookBook/CookBook";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { Footer } from "./components/Footer/Footer";
 

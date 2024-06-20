@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { bookmarkRecipe } from '../services/recipes';
+import { useNavigate } from "react-router-dom";
+import { bookmarkRecipe } from "../../services/recipes";
+import "./BookmarkRecipe.css";
 
-const BookmarkRecipe = ({ meal }) => {
+export const BookmarkRecipe = ({ meal }) => {
   const navigate = useNavigate();
 
   const handleBookmark = async () => {
@@ -15,7 +16,7 @@ const BookmarkRecipe = ({ meal }) => {
         picture: meal.strMealThumb,
         ingredients: meal.formattedIngredients,
         instructions: meal.strInstructions,
-        recipePageId: meal.idMeal // Ensure this field is included
+        recipePageId: meal.idMeal, // Ensure this field is included
       };
       await bookmarkRecipe(token, recipe);
       alert("Recipe bookmarked successfully!");
@@ -26,8 +27,8 @@ const BookmarkRecipe = ({ meal }) => {
   };
 
   return (
-    <button onClick={handleBookmark}>Bookmark</button>
+    <button className="bookmark-recipe-btn" onClick={handleBookmark}>
+      Bookmark
+    </button>
   );
 };
-
-export default BookmarkRecipe;

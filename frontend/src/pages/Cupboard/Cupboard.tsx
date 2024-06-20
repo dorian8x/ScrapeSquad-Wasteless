@@ -9,7 +9,7 @@ import { Header } from "../../components/Header/Header";
 export function Cupboard() {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [foundRecipes, setFoundRecipes] = useState<Object[]>([]);
-  const itemsPerShelf = 5; // Adjust this number to control how many items fit on one shelf
+  const itemsPerShelf = 3; // Adjust this number to control how many items fit on one shelf
 
   function handleOnDrag(e: React.DragEvent, ingredientType: string) {
     e.dataTransfer.setData("ingredientType", ingredientType);
@@ -41,7 +41,11 @@ export function Cupboard() {
     try {
       await findMealsByIngredients(ingredients)
         .then((recipes) => {
-          setFoundRecipes(recipes);
+          if (recipes.length == 0) {
+            setFoundRecipes(["Couldn't find anything :("])
+          } else {
+            setFoundRecipes(recipes);
+          }
         });
     } catch (err) {
       console.error(err);
@@ -76,11 +80,20 @@ export function Cupboard() {
         </div>
         <div className="home">
           <form onSubmit={handleSubmitIngredients}>
-            <input className="search-submit" role="submit-button" id="submit" type="submit" value="Submit" />
+            <input
+              className="search-submit"
+              role="submit-button"
+              id="submit"
+              type="submit"
+              value="Submit"
+            />
           </form>
         </div>
       </div>
-      <SearchResults props={foundRecipes} />
+      {foundRecipes.length == 0 ?
+        ""
+        : <SearchResults foundRecipes={foundRecipes} />
+      }
     </>
   );
 }

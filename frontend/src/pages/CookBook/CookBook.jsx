@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchSavedRecipes } from "../../services/recipes";
 import { Header } from "../../components/Header/Header";
-import RecipeTile from "../../components/RecipeTile/RecipeTile";
+import { RecipeTile } from "../../components/RecipeTile/RecipeTile";
 import "./CookBook.css";
 
-const CookBook = () => {
+export const CookBook = () => {
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
 
@@ -51,5 +51,3 @@ const CookBook = () => {
     </>
   );
 };
-
-export default CookBook;

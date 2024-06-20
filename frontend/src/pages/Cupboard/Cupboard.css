@@ -6,8 +6,8 @@
 }
 
 .page {
-    width: 80%;
-    min-height: 400px;
+    width: 40%;
+    min-height: 200px;
     background-color: #fafafa;
     border: 2px solid #ccc;
     padding: 20px;
@@ -44,12 +44,18 @@
 .clear-button {
     background-color: #15eea2;
     border: 2px solid #030303;
-    color: white;
+    color: black;
     cursor: pointer;
     border-radius: 5px;
     box-sizing: border-box;
-
+    transition: background-color 0.2s;
 }   
+
+.clear-button:hover {
+    background-color: #d32f2f;
+    color: white;
+    transform: scale(1.10);
+}
 
 .search-submit {
     background-color: #005a27;
@@ -65,4 +71,5 @@
 
 .search-submit:hover {
     background-color: #15e87e;
+    color: black;
 }

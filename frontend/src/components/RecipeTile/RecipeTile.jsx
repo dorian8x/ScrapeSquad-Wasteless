@@ -1,6 +1,6 @@
 import './RecipeTile.css';
 
-const RecipeTile = ({ recipe, onClick }) => {
+export const RecipeTile = ({ recipe, onClick }) => {
   const { picture, title, strMealThumb, strMeal } = recipe || {};
 
   const imageUrl = picture || strMealThumb;
@@ -13,5 +13,3 @@ const RecipeTile = ({ recipe, onClick }) => {
     </div>
   );
 };
-
-export default RecipeTile;

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import RecipeTile from "../RecipeTile/RecipeTile";
-import "./SearchResult.css";
+import { RecipeTile } from "../RecipeTile/RecipeTile";
+import "./SearchResults.css";
 
 export function SearchResults(props) {
   const navigate = useNavigate();
@@ -10,34 +10,18 @@ export function SearchResults(props) {
   };
 
   return (
-    <div>
-      <h1 className="search-result-title">Search Results</h1>
-      {props.props.map((recipe, index) => (
-        <RecipeTile
-          key={index}
-          recipe={recipe}
-          onClick={() => handleRecipeClick(recipe.idMeal)}
-        />
-      ))}
+    <div className="search-results">
+      {typeof props.foundRecipes[0] == "string" ? (
+        <p>{props.foundRecipes}</p>
+      ) : (
+        props.foundRecipes.map((recipe, index) => (
+          <RecipeTile
+            key={index}
+            recipe={recipe}
+            onClick={() => handleRecipeClick(recipe.idMeal)}
+          />
+        ))
+      )}
     </div>
   );
 }
-// import { useNavigate, useLocation } from "react-router-dom";
-// import { useEffect, useState  } from "react";
-// import { findRecipes } from "../../services/recipes";
-
-// export function SearchResults(props) { //Props is an array of objects
-//     return (
-//         <div>
-//             <h1 className="search-result-title">Search Results</h1> 
-//             {props.props.map((recipe, index) => (
-//                 <RecipeTile
-//                     key={index}
-//                     recipeId={recipe.idMeal}
-//                     picture={recipe.strMealThumb}
-//                     title={recipe.strMeal}
-//                 />
-//             ))}
-//         </div>
-//     )
-// }
