@@ -12,7 +12,7 @@ export function SearchResults(props) {
   return (
     <div className="search-results">
       {typeof props.foundRecipes[0] == "string" ? (
-        <p>{props.foundRecipes}</p>
+        <div className="empty-result">{props.foundRecipes}</div>
       ) : (
         props.foundRecipes.map((recipe, index) => (
           <RecipeTile

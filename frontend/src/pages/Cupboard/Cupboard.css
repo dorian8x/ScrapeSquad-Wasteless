@@ -1,13 +1,28 @@
+.drag-message {
+    background-color: rgb(220, 245, 220);
+    margin: 30px 10%;
+    padding: 10px;
+    border: 2px solid #090909;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .cupboard {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
     align-items: center;
     margin-top: 20px;
+    margin-inline: 10%;
 }
 
 .page {
     width: 40%;
-    min-height: 200px;
+    min-width: 200px;
+    min-height: 350px;
     background-color: #fafafa;
     border: 2px solid #ccc;
     padding: 20px;
@@ -61,6 +76,7 @@
     background-color: #005a27;
     color: white;
     padding: 10px 20px;
+    margin: 10px;
     font-size: 16px;
     border: 3px solid #030303;
     cursor: pointer;
