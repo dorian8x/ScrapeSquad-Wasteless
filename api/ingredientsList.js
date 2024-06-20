@@ -3452,4 +3452,4 @@ const allIngredients = [
     }
 ];
 
-console.log("how many ingredients?", allIngredients.length); // 575
+export { allIngredients };
