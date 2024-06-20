@@ -4,10 +4,9 @@ import "./App.css";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { SignupPage } from "./pages/Signup/SignupPage";
 import { Cupboard } from "./pages/Cupboard/Cupboard";
-import  { Recipe }  from "./pages/Recipe/Recipe";
-import { Cookbook } from "./pages/CookBook/CookBook";
+import { Recipe } from "./pages/Recipe/Recipe";
+import { CookBook } from "./pages/CookBook/CookBook";
 import { LandingPage } from "./pages/Landing/LandingPage";
-import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 
 // docs: https://reactrouter.com/en/main/start/overview
@@ -34,14 +33,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/cookbook",
-    element: <Cookbook />,
+    element: <CookBook />,
   },
 ]);
 
 const App = () => {
   return (
     <>
-      <Header />
       <RouterProvider router={router} />
       <Footer />
     </>

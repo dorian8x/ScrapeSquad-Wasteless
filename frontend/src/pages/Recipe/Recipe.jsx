@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { findMealByID } from "../../services/meals";
-import './Recipe.css';
+import { Header } from "../../components/Header/Header";
+import { BookmarkRecipe } from "../../components/BookmarkRecipe/BookmarkRecipe";
+import "./Recipe.css";
 
 export const Recipe = () => {
   const [meal, setMeal] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
-  const meal_id = useParams().id;
+  const { id: meal_id } = useParams();
+  const location = useLocation();
+  const isSaved = location.state?.isSaved || false;
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
     findMealByID(meal_id)
       .then((data) => {
         setMeal(data);
@@ -17,31 +26,32 @@ export const Recipe = () => {
         console.error(err);
         navigate("/cupboard");
       });
-}, [navigate])
+  }, [navigate, meal_id]);
 
   return (
-    <div className="recipe">
-      <header className="header">
-        <div className="header-content" style={{ backgroundImage: `url(${meal.strMealThumb})` }}>
-          <h1 className="header-title">{meal.strMeal}</h1>
-        </div>
-      </header>
-      <div className="recipe-content">
-        <div className="ingredients">
-          <h2>Ingredients:</h2>
-          <ul>
-            {meal.formattedIngredients
-            ? meal.formattedIngredients.map(
-                (ing, index) => <li key={index}>{ing}</li>)
-              : ""}
-          </ul>
-        </div>
-        <div className="instructions">
-          <h2>Instructions:</h2>
+    <>
+      <Header />
+      <div className="recipe">
+        <h1>{meal.strMeal}</h1>
+        <img src={meal.strMealThumb} alt={meal.strMeal} />
+        <div className="recipe-content">
+          <div className="ingredients">
+            <h2>Ingredients:</h2>
+            <ul>
+              {meal.formattedIngredients
+                ? meal.formattedIngredients.map((ing, index) => (
+                    <li key={index}>{ing}</li>
+                  ))
+                : ""}
+            </ul>
+          </div>
+          <div className="instructions">
+            <h2>Instructions:</h2>
             {meal.strInstructions}
+          </div>
         </div>
+        {isLoggedIn && !isSaved && <BookmarkRecipe meal={meal} />}
       </div>
-          {/* <Buttons onButton1Click={handleButton1Click}onButton3Click={handleButton3Click} /> */}
-    </div>
+    </>
   );
 };

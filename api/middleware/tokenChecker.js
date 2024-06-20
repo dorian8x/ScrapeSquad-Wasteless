@@ -15,7 +15,7 @@ const tokenChecker = (req, res, next) => {
       res.status(401).json({ message: "auth error" });
     } else {
       // Add the user_id from the payload to the req object.
-      req.user_id = payload.user_id;
+      req.user_id = payload.user_id
       next();
     }
   });

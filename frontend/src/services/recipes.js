@@ -1,25 +1,6 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const getRecipes = async (token) => {
-  const requestOptions = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-  const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
-
-  if (response.status !== 200) {
-    throw new Error("Unable to fetch posts");
-  }
-
-  const data = await response.json();
-  return data;
-};
-
-export const saveRecipe = async (token, recipe) => {
+export const bookmarkRecipe = async (token, recipe) => {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -28,13 +9,26 @@ export const saveRecipe = async (token, recipe) => {
     },
     body: JSON.stringify(recipe),
   };
-
   const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
-
   if (response.status !== 201) {
-    throw new Error("Unable to save recipe");
+    throw new Error("Failed to bookmark recipe");
   }
-
   const data = await response.json();
   return data;
+};
+
+export const fetchSavedRecipes = async (token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await fetch(`${BACKEND_URL}/recipes`, requestOptions);
+  if (response.status !== 200) {
+    throw new Error("Failed to fetch saved recipes");
+  }
+  const data = await response.json();
+  return data.savedRecipes;
 };

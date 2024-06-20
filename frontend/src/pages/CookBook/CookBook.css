@@ -1,0 +1,6 @@
+.cookbook {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between tiles */
+  padding: 20px;
+}

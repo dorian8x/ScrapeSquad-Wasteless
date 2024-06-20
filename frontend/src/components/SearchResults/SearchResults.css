@@ -1,0 +1,19 @@
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+}
+
+.empty-result {
+    background-color: rgb(220, 245, 220);
+    margin: 30px 10%;
+    padding: 10px;
+    border: 2px solid #090909;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    justify-items: center;
+}

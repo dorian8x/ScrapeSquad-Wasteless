@@ -5,27 +5,9 @@
     box-sizing: border-box;
 }
 
-.header {
-    background-color: transparent;
-    padding: 20px;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.header-content {
-    position: relative;
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.header-title {
-    font-size: 3em;
-    margin: 0;
+.recipe h1 {
+    color: #ffffff;
+    margin-bottom: 1rem;
 }
 
 .recipe-content {
