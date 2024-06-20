@@ -8,13 +8,13 @@
     z-index: 1;
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
 }
 
 .cupboard {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
     margin-top: 20px;
     margin-inline: 10%;
 }
