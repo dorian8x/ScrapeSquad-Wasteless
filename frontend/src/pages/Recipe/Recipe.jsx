@@ -14,6 +14,7 @@ export const Recipe = () => {
   const isSaved = location.state?.isSaved || false;
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
@@ -33,7 +34,7 @@ export const Recipe = () => {
       <Header />
       <div className="recipe">
         <h1>{meal.strMeal}</h1>
-        <img src={meal.strMealThumb} alt={meal.strMeal} />
+        <img className="recipe-picture" src={meal.strMealThumb} alt={meal.strMeal} />
         <div className="recipe-content">
           <div className="ingredients">
             <h2>Ingredients:</h2>

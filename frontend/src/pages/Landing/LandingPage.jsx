@@ -13,12 +13,6 @@ export const LandingPage = () => {
           {" "}
           Your Go-To Solution for Leftover Ingredients!{" "}
         </h2>
-        <h3 className="Description">
-          {" "}
-          Welcome to Wasteless, the ultimate online platform designed to help
-          you reduce food waste and make the most out of your leftover
-          ingredients!{" "}
-        </h3>
         <Link to="/cupboard" className="fridge-button">
           <img
             src={logo}
@@ -31,6 +25,12 @@ export const LandingPage = () => {
             }}
           />
         </Link>
+            <h3 className="Description">
+              {" "}
+              Welcome to Wasteless, the ultimate online platform designed to help
+              you reduce food waste and make the most out of your leftover
+              ingredients!{" "}
+            </h3>
       </div>
     </>
   );

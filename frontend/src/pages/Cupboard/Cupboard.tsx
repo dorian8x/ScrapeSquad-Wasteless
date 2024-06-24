@@ -5,12 +5,17 @@ import DroppedWidget from "../../components/DroppedWidget/DroppedWidget";
 import { findMealsByIngredients } from '../../services/meals';
 import { SearchResults } from '../../components/SearchResults/SearchResults';
 import { Header } from "../../components/Header/Header";
+import { useEffect } from 'react';
 
 export function Cupboard() {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [foundRecipes, setFoundRecipes] = useState<Object[]>([]);
   const itemsPerShelf = 2; // Adjust this number to control how many items fit on one shelf
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   function handleOnDrag(e: React.DragEvent, ingredientType: string) {
     e.dataTransfer.setData("ingredientType", ingredientType);
   }
@@ -88,7 +93,7 @@ export function Cupboard() {
             role="submit-button"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Get Cooking!"
           />
         </form>
       {foundRecipes.length == 0 ?
