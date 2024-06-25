@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+.recipe-picture {
+    max-height: 600px;
+}
+
 .recipe h1 {
     color: #ffffff;
     margin-bottom: 1rem;
@@ -33,6 +37,10 @@
 .ingredients ul {
     list-style-type: none;
     padding: 0;
+}
+
+.ingredients li {
+    padding: 4px;
 }
 
 .instructions {

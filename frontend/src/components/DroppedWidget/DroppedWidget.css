@@ -12,7 +12,7 @@
 
 .dropped-widget:hover {
     border-color: #005a27;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .dropped-widget button {
@@ -22,7 +22,6 @@
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
-    transition: background-color 0.2s;
 }
 
 .dropped-widget button:hover {

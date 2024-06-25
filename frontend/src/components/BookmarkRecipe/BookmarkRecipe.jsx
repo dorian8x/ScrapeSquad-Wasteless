@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { bookmarkRecipe } from "../../services/recipes";
+import { useState } from "react";
 import "./BookmarkRecipe.css";
 
 export const BookmarkRecipe = ({ meal }) => {
   const navigate = useNavigate();
+  const [isClicked, setIsClicked] = useState();
 
   const handleBookmark = async () => {
     try {
@@ -16,9 +18,10 @@ export const BookmarkRecipe = ({ meal }) => {
         picture: meal.strMealThumb,
         ingredients: meal.formattedIngredients,
         instructions: meal.strInstructions,
-        recipePageId: meal.idMeal, // Ensure this field is included
+        recipePageId: meal.idMeal,
       };
       await bookmarkRecipe(token, recipe);
+      setIsClicked(true);
       alert("Recipe bookmarked successfully!");
     } catch (error) {
       console.error("Error bookmarking recipe:", error);
@@ -27,8 +30,8 @@ export const BookmarkRecipe = ({ meal }) => {
   };
 
   return (
-    <button className="bookmark-recipe-btn" onClick={handleBookmark}>
-      Bookmark
-    </button>
+    <>
+      {!isClicked && <button className="bookmark-recipe-btn" onClick={handleBookmark}>Bookmark</button>}
+    </>
   );
 };

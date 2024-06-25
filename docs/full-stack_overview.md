@@ -12,15 +12,6 @@ Contents:
   - [NodeJS](#n-is-for-node)
 - [Architecture](#architecture)
 
-## Existing Features
-
-It's already possible for a user to:
-
-- Sign up
-- Sign in
-- Sign out
-- View a list of posts
-
 ## Technologies
 
 Here's an overview of the technologies used to build this template application.
