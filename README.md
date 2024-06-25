@@ -1,3 +1,6 @@
+# WasteLess
+## An easy to use web application to find recipes online based on your available ingredients.
+
 ### Structure
 
 This repo contains two applications:
